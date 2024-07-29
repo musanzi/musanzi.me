@@ -1,0 +1,30 @@
+<div class="py-10 mb-10 border-b">
+  <h3 class="font-semibold text-4xl mb-10">My experience</h3>
+
+  @for (experience of experiences; track $index) {
+  <div class="flex items-center gap-4 mb-8">
+    <div class="flex flex-col gap-2">
+      <div class="flex items-center gap-3">
+        <p class="text-gray-900 font-extrabold text-center px-3 py-1 border text-sm rounded-md">
+          {{ experience.company[0].toLocaleLowerCase() }}
+        </p>
+        <p class="text-gray-600">{{ experience.company }}</p>
+      </div>
+      <div class="flex items-center gap-5">
+        <h4 class="text-gray-900 text-lg">{{ experience.position }}</h4>
+        <p class="text-gray-600">{{ experience.duration.from }} &mdash; {{ experience.duration.to }}</p>
+      </div>
+      <ul class="flex flex-wrap" aria-label="Technologies used">
+        @for (tool of experience.tools; track $index) {
+        <li class="mr-1.5 mt-2">
+          <div
+            class="flex items-center rounded-lg bg-gray-600/10 px-3 py-1 text-xs font-medium leading-5 text-gray-800">
+            {{ tool }}
+          </div>
+        </li>
+        }
+      </ul>
+    </div>
+  </div>
+  }
+</div>
