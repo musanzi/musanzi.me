@@ -1,6 +1,5 @@
-<div class="py-10 mb-10 border-b">
+<section class="pb-10 pt-16 border-b">
   <h3 class="font-semibold text-4xl mb-10">My experience</h3>
-
   @for (experience of experiences; track $index) {
   <div class="flex items-center gap-4 mb-8">
     <div class="flex flex-col gap-2">
@@ -18,7 +17,7 @@
         @for (tool of experience.tools; track $index) {
         <li class="mr-1.5 mt-2">
           <div
-            class="flex items-center rounded-lg bg-gray-600/10 px-3 py-1 text-xs font-medium leading-5 text-gray-800">
+            class="flex items-center rounded-lg bg-gray-400/10 px-3 py-1 text-xs font-medium leading-5 text-gray-600">
             {{ tool }}
           </div>
         </li>
@@ -27,4 +26,4 @@
     </div>
   </div>
   }
-</div>
+</section>

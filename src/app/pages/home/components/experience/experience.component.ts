@@ -18,7 +18,7 @@ export class ExperienceComponent {
         from: 'November 2020',
         to: 'September 2020'
       },
-      tools: ['react', 'nextjs', 'firebase', 'tailwindcss', 'git', 'github']
+      tools: ['typescript', 'react', 'nextjs', 'firebase', 'tailwindcss', 'git', 'github']
     },
     {
       position: 'Fullstack Developer',
@@ -29,7 +29,7 @@ export class ExperienceComponent {
         from: 'November 2023',
         to: 'Present'
       },
-      tools: ['angular', 'nestjs', 'mariadb', 'tailwindcss', 'git', 'github', 'vps']
+      tools: ['typescript', 'angular', 'nestjs', 'mariadb', 'tailwindcss', 'git', 'github', 'vps']
     }
   ];
 }
