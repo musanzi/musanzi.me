@@ -7,5 +7,6 @@ module.exports = {
       dm: ['DM Sans', 'sans-serif']
     }
   },
+  darkMode: 'selector',
   plugins: []
 };

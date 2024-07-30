@@ -1,13 +1,13 @@
 {
-  "name": "woies-sarl",
+  "name": "portfolio",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "dev": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:woies-sarl": "node dist/woies-sarl/server/server.mjs",
+    "ssr": "node dist/portfolio/server/server.mjs",
     "prepare": "husky",
     "lint": "ng lint"
   },

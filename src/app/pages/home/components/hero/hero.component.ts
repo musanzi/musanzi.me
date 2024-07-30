@@ -1,5 +1,5 @@
-import { AsyncPipe, NgIf, NgOptimizedImage } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { AsyncPipe, DOCUMENT, NgIf, NgOptimizedImage } from '@angular/common';
+import { Component, Inject, signal, WritableSignal } from '@angular/core';
 
 @Component({
   selector: 'app-hero',
@@ -8,18 +8,25 @@ import { Component, signal } from '@angular/core';
   templateUrl: './hero.component.html'
 })
 export class HeroComponent {
-  currentSlide = signal(0);
+  isDark: WritableSignal<boolean> = signal(window.localStorage.getItem('isDark') === 'true');
 
-  images: { imgPath: string }[] = [
-    { imgPath: '/images/hero.jpeg' },
-    { imgPath: '/images/meeting.jpeg' },
-    { imgPath: '/images/hero.jpeg' }
-  ];
+  constructor(
+    @Inject(DOCUMENT)
+    private document: Document
+  ) {
+    if (this.isDark()) {
+      this.document.body.classList.add('dark');
+    }
+  }
 
-  activities: { fade: string; title: string }[] = [
-    { fade: 'fade-in-4', title: 'Utajiri' },
-    { fade: 'fade-in-5', title: 'Élevage' },
-    { fade: 'fade-in-6', title: 'Agriculture' },
-    { fade: 'fade-in-7', title: 'Énergie' }
-  ];
+  switchTheme(): void {
+    this.isDark.update((isDark) => !isDark);
+    if (this.isDark()) {
+      this.document.body.classList.add('dark');
+      window.localStorage.setItem('isDark', this.isDark().toString());
+    } else {
+      this.document.body.classList.remove('dark');
+      window.localStorage.setItem('isDark', this.isDark().toString());
+    }
+  }
 }
