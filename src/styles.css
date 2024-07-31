@@ -9,6 +9,6 @@
   }
 
   ::selection {
-    @apply text-white bg-gray-800;
+    @apply text-white bg-zinc-900;
   }
 }
