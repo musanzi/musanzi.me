@@ -1,32 +1,33 @@
-import { AsyncPipe, DOCUMENT, NgIf, NgOptimizedImage } from '@angular/common';
+import { DOCUMENT, NgOptimizedImage } from '@angular/common';
 import { Component, Inject, signal, WritableSignal } from '@angular/core';
 
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [NgOptimizedImage, AsyncPipe, NgIf],
+  imports: [NgOptimizedImage],
   templateUrl: './hero.component.html'
 })
 export class HeroComponent {
-  isDark: WritableSignal<boolean> = signal(window.localStorage.getItem('isDark') === 'true');
+  storedTheme = window.localStorage.getItem('isDark');
+  isDark: WritableSignal<boolean> = this.storedTheme
+    ? signal(this.storedTheme === 'true')
+    : signal(window.matchMedia('(prefers-color-scheme: dark)').matches);
 
   constructor(
     @Inject(DOCUMENT)
     private document: Document
   ) {
-    if (this.isDark()) {
-      this.document.body.classList.add('dark');
-    }
+    this.updateTheme();
   }
 
   switchTheme(): void {
     this.isDark.update((isDark) => !isDark);
-    if (this.isDark()) {
-      this.document.body.classList.add('dark');
-      window.localStorage.setItem('isDark', this.isDark().toString());
-    } else {
-      this.document.body.classList.remove('dark');
-      window.localStorage.setItem('isDark', this.isDark().toString());
-    }
+    window.localStorage.setItem('isDark', this.isDark().toString());
+    this.updateTheme();
+  }
+
+  private updateTheme(): void {
+    if (this.isDark()) this.document.body.classList.add('dark');
+    else this.document.body.classList.remove('dark');
   }
 }
