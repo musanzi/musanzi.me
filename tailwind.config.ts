@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {},
     fontFamily: {
-      satoshi: ['Satoshi', 'sans-serif']
+      cabinet: ['Cabinet Grotesk', 'sans-serif']
     }
   },
   darkMode: 'selector',
