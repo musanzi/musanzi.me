@@ -5,10 +5,10 @@
 
 @layer utilities {
   ::-moz-selection {
-    @apply text-white bg-gray-900;
+    @apply text-white bg-gray-900 dark:bg-white dark:text-gray-900;
   }
 
   ::selection {
-    @apply text-white bg-zinc-900;
+    @apply text-white bg-zinc-900 dark:bg-white dark:text-gray-900;
   }
 }
