@@ -3,13 +3,16 @@
   @for (experience of experiences; track $index) {
   <div class="flex items-center gap-4 mb-10">
     <div class="flex flex-col gap-2">
-      <div class="flex items-center gap-3 mb-3">
+      <a [href]="experience.websiteUrl" target="_blank" class="flex items-center gap-3 mb-3 group">
         <p
           class="text-gray-900 dark:text-white font-extrabold text-center px-3 py-1 border dark:border-zinc-600 text-sm rounded-md">
           {{ experience.company[0].toLocaleLowerCase() }}
         </p>
-        <p class="text-gray-600 dark:text-gray-100">{{ experience.company }}</p>
-      </div>
+        <span
+          class="inline-block text-gray-600 dark:text-gray-100 group-hover:text-gray-900 transition-colors duration-200 underline">
+          {{ experience.company }}
+        </span>
+      </a>
       <div class="flex flex-col md:flex-row md:items-center items-start gap-2.5">
         <h4 class="text-gray-900 text-lg dark:text-white font-medium">{{ experience.position }}</h4>
         <p class="text-gray-600 dark:text-gray-100">
@@ -20,7 +23,7 @@
         @for (tool of experience.tools; track $index) {
         <li class="mr-1.5 mt-2">
           <div
-            class="flex items-center rounded-full bg-gray-100 dark:bg-zinc-700 px-3 py-1 text-xs font-medium leading-5 text-gray-600 dark:text-zinc-50">
+            class="flex items-center rounded-md bg-gray-100 dark:bg-zinc-700 px-3 py-1 text-xs font-medium leading-5 text-gray-600 dark:text-zinc-50">
             {{ tool }}
           </div>
         </li>

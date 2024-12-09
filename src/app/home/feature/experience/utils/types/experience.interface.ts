@@ -3,6 +3,7 @@ export interface IExperience {
   company: string;
   description: string;
   location: string;
+  websiteUrl: string;
   duration: {
     from: string;
     to: string;
