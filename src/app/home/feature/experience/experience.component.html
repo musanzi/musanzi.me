@@ -2,16 +2,17 @@
   <h3 class="font-semibold text-4xl mb-10">My experience</h3>
   @for (experience of experiences; track $index) {
   <div class="flex items-center gap-4 mb-10">
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-1.5">
       <a [href]="experience.websiteUrl" target="_blank" class="flex items-center gap-3 mb-3 group">
-        <p
-          class="text-gray-900 dark:text-white font-extrabold text-center px-3 py-1 border dark:border-zinc-600 text-sm rounded-md">
-          {{ experience.company[0].toLocaleLowerCase() }}
-        </p>
         <span
-          class="inline-block text-gray-600 dark:text-gray-100 group-hover:text-gray-900 transition-colors duration-200 underline">
+          class="text-gray-900 dark:text-white font-extrabold text-center px-3 py-1 border border-gray-200 dark:border-zinc-600 text-sm rounded-md">
+          {{ experience.company[0].toLocaleLowerCase() }}
+        </span>
+        <span
+          class="inline-block text-gray-600 dark:text-gray-100 group-hover:text-gray-900 duration-200 hover:underline group">
           {{ experience.company }}
         </span>
+        <i-lucide [name]="icons.moveUpRight" class="size-3 group-hover:-translate-1 duration-300" />
       </a>
       <div class="flex flex-col md:flex-row md:items-center items-start gap-2.5">
         <h4 class="text-gray-900 text-lg dark:text-white font-medium">{{ experience.position }}</h4>
