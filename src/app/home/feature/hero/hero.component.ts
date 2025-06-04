@@ -3,7 +3,6 @@ import { SwitcherComponent } from '../../../shared/ui/switcher/switcher.componen
 
 @Component({
   selector: 'app-hero',
-  standalone: true,
   imports: [SwitcherComponent],
   templateUrl: './hero.component.html'
 })
