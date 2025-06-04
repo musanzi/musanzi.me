@@ -1,29 +1,36 @@
-import { DOCUMENT } from '@angular/common';
-import { Component, Inject, signal, WritableSignal } from '@angular/core';
+import { CommonModule, DOCUMENT } from '@angular/common';
+import { afterRender, Component, Inject, signal } from '@angular/core';
+import { LucideAngularModule, MoonStar, Sun } from 'lucide-angular';
 
 @Component({
   selector: 'app-switcher',
   standalone: true,
-  imports: [],
+  imports: [LucideAngularModule, CommonModule],
   templateUrl: './switcher.component.html'
 })
 export class SwitcherComponent {
-  storedTheme = window.localStorage.getItem('isDark');
-  isDark: WritableSignal<boolean> = this.storedTheme
-    ? signal(this.storedTheme === 'true')
+  #storedTheme = signal<string | null>(window.localStorage.getItem('isDark'));
+  isDark = this.#storedTheme()
+    ? signal(this.#storedTheme() === 'true')
     : signal(window.matchMedia('(prefers-color-scheme: dark)').matches);
+  icons = {
+    light: MoonStar,
+    dark: Sun
+  };
 
   constructor(@Inject(DOCUMENT) private document: Document) {
-    this.updateTheme();
+    afterRender(() => {
+      this.updateTheme();
+    });
   }
 
   switchTheme(): void {
     this.isDark.update((isDark) => !isDark);
-    window.localStorage.setItem('isDark', this.isDark().toString());
+    window.localStorage.setItem('isDark', `${this.isDark()}`);
     this.updateTheme();
   }
 
-  private updateTheme(): void {
+  updateTheme(): void {
     if (this.isDark()) this.document.body.classList.add('dark');
     else this.document.body.classList.remove('dark');
   }
