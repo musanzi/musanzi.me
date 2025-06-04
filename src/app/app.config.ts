@@ -10,6 +10,6 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     { provide: TitleStrategy, useClass: PageTitleStrategy },
     provideRouter(routes),
-    provideClientHydration(),
-  ],
+    provideClientHydration()
+  ]
 };
