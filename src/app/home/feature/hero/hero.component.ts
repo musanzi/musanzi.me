@@ -1,9 +1,14 @@
 import { Component } from '@angular/core';
 import { SwitcherComponent } from '../../../shared/ui/switcher/switcher.component';
+import { LucideAngularModule, MoveUpRight } from 'lucide-angular';
 
 @Component({
   selector: 'app-hero',
-  imports: [SwitcherComponent],
+  imports: [SwitcherComponent, LucideAngularModule],
   templateUrl: './hero.component.html'
 })
-export class HeroComponent {}
+export class HeroComponent {
+  icons = {
+    moveUpRight: MoveUpRight
+  };
+}

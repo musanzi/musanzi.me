@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { experiences } from './utils/data/experiences.data';
+import { experiences } from '../../utils/data/experiences';
 import { LucideAngularModule, MoveUpRight } from 'lucide-angular';
 
 @Component({

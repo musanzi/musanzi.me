@@ -1,36 +1,51 @@
 <section class="pb-10 pt-16 border-b border-gray-200 dark:border-zinc-600">
-  <h3 class="font-semibold text-4xl mb-10">My experience</h3>
-  @for (experience of experiences; track $index) {
-  <div class="flex items-center gap-4 mb-10">
-    <div class="flex flex-col gap-1.5">
-      <a [href]="experience.websiteUrl" target="_blank" class="flex items-center gap-3 mb-3 group">
-        <span
-          class="text-gray-900 dark:text-white font-extrabold text-center px-3 py-1 border border-gray-200 dark:border-zinc-600 text-sm rounded-md">
-          {{ experience.company[0].toLocaleLowerCase() }}
-        </span>
-        <span
-          class="inline-block text-gray-600 dark:text-gray-100 group-hover:text-gray-900 duration-200 hover:underline group">
-          {{ experience.company }}
-        </span>
-        <i-lucide [name]="icons.moveUpRight" class="size-3 group-hover:-translate-1 duration-300" />
-      </a>
-      <div class="flex flex-col md:flex-row md:items-center items-start gap-2.5">
-        <h4 class="text-gray-900 text-lg dark:text-white font-medium">{{ experience.position }}</h4>
-        <p class="text-gray-600 dark:text-gray-100">
+  <h3 class="font-semibold text-4xl mb-4">Professional Experience</h3>
+  <p class="text-gray-600 dark:text-zinc-400 mb-8">
+    I’ve contributed to impactful projects within innovative environments. My experience at the Centre d'Innovation de
+    Lubumbashi and ZX Connect has strengthened my skills in building scalable applications, collaborating with dynamic
+    teams, and delivering reliable tech solutions across various domains.
+  </p>
+  <ol class="group/list">
+    @for (experience of experiences; track $index) {
+    <li class="mb-12">
+      <div
+        class="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-40 duration-300">
+        <div class="z-10 mb-2 mt-1 text-xs font-bold uppercase tracking-wide sm:col-span-2">
           {{ experience.duration.from }} &mdash; {{ experience.duration.to }}
-        </p>
+        </div>
+        <div class="z-10 sm:col-span-6">
+          <h3 class="font-medium leading-snug text-slate-200">
+            <div>
+              <a
+                class="inline-flex items-baseline font-medium leading-tight group/link text-base text-gray-950 dark:text-white"
+                [href]="experience.websiteUrl"
+                target="_blank">
+                <span class="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block">
+                </span>
+                {{ experience.position }},
+                {{ experience.company }}
+                <i-lucide
+                  [name]="icons.moveUpRight"
+                  class="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1 translate-y-px" />
+              </a>
+            </div>
+          </h3>
+          <p class="mt-2 leading-normal">
+            {{ experience.description }}
+          </p>
+          <ul class="mt-2 flex flex-wrap" aria-label="Technologies used">
+            @for (tool of experience.tools; track $index) {
+            <li class="mr-1.5 mt-2">
+              <div
+                class="flex items-center rounded-full bg-slate-500/10 px-3 py-1 text-xs font-medium leading-5 text-slate-600 dark:bg-slate-500/20 dark:text-slate-300">
+                {{ tool }}
+              </div>
+            </li>
+            }
+          </ul>
+        </div>
       </div>
-      <ul class="flex flex-wrap" aria-label="Technologies used">
-        @for (tool of experience.tools; track $index) {
-        <li class="mr-1.5 mt-2">
-          <div
-            class="flex items-center rounded-md bg-gray-100 dark:bg-zinc-700 px-3 py-1 text-xs font-medium leading-5 text-gray-600 dark:text-zinc-50">
-            {{ tool }}
-          </div>
-        </li>
-        }
-      </ul>
-    </div>
-  </div>
-  }
+    </li>
+    }
+  </ol>
 </section>
