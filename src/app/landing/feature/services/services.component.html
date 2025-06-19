@@ -5,37 +5,20 @@
       I offer end-to-end development solutions tailored to your needs — from crafting intuitive user interfaces to
       building scalable APIs and maintaining robust systems.
     </p>
-    <ul class="list-none flex items-center flex-wrap gap-1.5">
-      <li class="mr-1.5 mt-2">
-        <div
-          class="flex items-center text-xs md:text-sm rounded-md bg-slate-400/20 px-3 py-1 leading-5 text-slate-900 dark:bg-slate-500/20 dark:text-slate-200">
-          FullStack Development
-        </div>
-      </li>
-      <li class="mr-1.5 mt-2">
-        <div
-          class="flex items-center text-xs md:text-sm rounded-md bg-slate-400/20 px-3 py-1 leading-5 text-slate-900 dark:bg-slate-500/20 dark:text-slate-200">
-          Frontend Development
-        </div>
-      </li>
-      <li class="mr-1.5 mt-2">
-        <div
-          class="flex items-center text-xs md:text-sm rounded-md bg-slate-400/20 px-3 py-1 leading-5 text-slate-900 dark:bg-slate-500/20 dark:text-slate-200">
-          API Development
-        </div>
-      </li>
-      <li class="mr-1.5 mt-2">
-        <div
-          class="flex items-center text-xs md:text-sm rounded-md bg-slate-400/20 px-3 py-1 leading-5 text-slate-900 dark:bg-slate-500/20 dark:text-slate-200">
-          Maintenance & Support
-        </div>
-      </li>
-      <li class="mr-1.5 mt-2">
-        <div
-          class="flex items-center text-xs md:text-sm rounded-md bg-slate-400/20 px-3 py-1 leading-5 text-slate-900 dark:bg-slate-500/20 dark:text-slate-200">
-          Database Design & Management
-        </div>
-      </li>
-    </ul>
+    <div class="grid grid-cols-1 gap-x-6 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
+      @for (s of services; track $index) {
+      <div class="flex flex-col gap-1">
+        <p
+          class="h-10 w-10 border-gray-300 text-center flex flex-col items-center justify-center rounded-full text-gray-600 dark:text-gray-200 bg-gray-200 dark:bg-zinc-600">
+          <i-lucide [name]="s.icon" class="size-5" />
+        </p>
+        <h5
+          class="font-extrabold py-2 border-r-1 border-gray-200 dark:border-zinc-700 text-lg mb-1.5 text-gray-900 dark:text-gray-100">
+          {{ s.title }}
+        </h5>
+        <p class="text-sm">{{ s.description }}</p>
+      </div>
+      }
+    </div>
   </div>
 </section>

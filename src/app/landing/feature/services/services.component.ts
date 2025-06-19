@@ -1,8 +1,12 @@
 import { Component } from '@angular/core';
+import { services } from '../../utils/data/services';
+import { LucideAngularModule } from 'lucide-angular';
 
 @Component({
   selector: 'app-services',
-  imports: [],
-  templateUrl: './services.component.html'
+  imports: [LucideAngularModule],
+  templateUrl: './services.component.html',
 })
-export class ServicesComponent {}
+export class ServicesComponent {
+  services = services;
+}
