@@ -6,20 +6,21 @@ import { LucideAngularModule, MoonStar, Sun } from 'lucide-angular';
   selector: 'app-switcher',
   standalone: true,
   imports: [LucideAngularModule, CommonModule],
-  templateUrl: './switcher.component.html'
+  templateUrl: './switcher.component.html',
 })
 export class SwitcherComponent {
-  #storedTheme = signal<string | null>(window.localStorage.getItem('isDark'));
-  isDark = this.#storedTheme()
-    ? signal(this.#storedTheme() === 'true')
-    : signal(window.matchMedia('(prefers-color-scheme: dark)').matches);
+  isDark = signal<boolean>(false);
   icons = {
     light: MoonStar,
-    dark: Sun
+    dark: Sun,
   };
 
   constructor(@Inject(DOCUMENT) private document: Document) {
     afterRender(() => {
+      const storedTheme = window.localStorage.getItem('isDark');
+      this.isDark = storedTheme
+        ? signal(storedTheme === 'true')
+        : signal(window.matchMedia('(prefers-color-scheme: dark)').matches);
       this.updateTheme();
     });
   }
