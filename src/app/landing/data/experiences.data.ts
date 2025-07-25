@@ -1,12 +1,22 @@
-import { IExperience } from '../types/experience.interface';
+interface IExperience {
+  position: string;
+  company: string;
+  description: string;
+  location: string;
+  websiteUrl: string;
+  duration: {
+    from: string;
+    to: string;
+  };
+  tools: string[];
+}
 
-export const experiences: IExperience[] = [
+export const EXPERIENCES: IExperience[] = [
   {
     position: 'Frontend Developer',
     company: 'ZX Connect',
     location: 'Lubumbashi, DR Congo',
-    description:
-      'Built responsive and performant user interfaces using Next.js and React. Collaborated with designers to implement modern UI/UX designs and ensured cross-device compatibility.',
+    description: 'Built responsive and performant user interfaces using Next.js and React.',
     websiteUrl: 'https://www.linkedin.com/company/zx-connect-sarl/',
     duration: {
       from: 'November 2020',
@@ -18,8 +28,7 @@ export const experiences: IExperience[] = [
     position: 'Lead Software Developer',
     company: "Centre d'innovation de Lubumbashi",
     location: 'Lubumbashi, DR Congo',
-    description:
-      'Led fullstack development of scalable web applications using Angular and NestJS. Designed secure authentication systems, dynamic forms, user workflows for entrepreneurial programs and others apps for the community.',
+    description: 'Lead Fullstack Web developer, building and maintaining web applications using Angular and NestJS.',
     websiteUrl: 'https://cinolu.org',
     duration: {
       from: 'November 2023',

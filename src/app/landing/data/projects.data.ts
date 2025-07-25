@@ -1,4 +1,11 @@
-export const projects: { title: string; description: string; img: string; websiteUrl: string }[] = [
+interface IProject {
+  title: string;
+  description: string;
+  img: string;
+  websiteUrl: string;
+}
+
+export const PROJECTS: IProject[] = [
   {
     title: 'Fikiri',
     description:

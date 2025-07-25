@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { services } from '../../utils/data/services';
+import { SERVICES } from '../../data/services.data';
 import { LucideAngularModule } from 'lucide-angular';
 
 @Component({
@@ -8,5 +8,5 @@ import { LucideAngularModule } from 'lucide-angular';
   templateUrl: './services.component.html',
 })
 export class ServicesComponent {
-  services = services;
+  services = SERVICES;
 }

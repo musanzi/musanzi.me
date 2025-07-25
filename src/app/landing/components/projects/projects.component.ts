@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import { LucideAngularModule, MoveUpRight } from 'lucide-angular';
-import { projects } from '../../utils/data/projects';
+import { PROJECTS } from '../../data/projects.data';
 
 @Component({
   selector: 'app-projects',
   imports: [LucideAngularModule],
-  templateUrl: './projects.component.html'
+  templateUrl: './projects.component.html',
 })
 export class ProjectsComponent {
-  projects = projects;
+  projects = PROJECTS;
   icons = {
-    moveUpRight: MoveUpRight
+    moveUpRight: MoveUpRight,
   };
 }

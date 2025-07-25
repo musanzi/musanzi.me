@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-import { experiences } from '../../utils/data/experiences';
+import { EXPERIENCES } from '../../data/experiences.data';
 import { LucideAngularModule, MoveUpRight } from 'lucide-angular';
 
 @Component({
   selector: 'app-experience',
   imports: [LucideAngularModule],
-  templateUrl: './experience.component.html'
+  templateUrl: './experience.component.html',
 })
 export class ExperienceComponent {
-  experiences = experiences;
+  experiences = EXPERIENCES;
   icons = {
-    moveUpRight: MoveUpRight
+    moveUpRight: MoveUpRight,
   };
 }
