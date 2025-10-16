@@ -5,11 +5,11 @@ import { PROJECTS } from '../../data/projects.data';
 @Component({
   selector: 'app-projects',
   imports: [LucideAngularModule],
-  templateUrl: './projects.component.html',
+  templateUrl: './projects.html'
 })
-export class ProjectsComponent {
+export class Projects {
   projects = PROJECTS;
   icons = {
-    moveUpRight: MoveUpRight,
+    moveUpRight: MoveUpRight
   };
 }

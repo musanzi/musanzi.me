@@ -5,11 +5,11 @@ import { LucideAngularModule, MoveUpRight } from 'lucide-angular';
 @Component({
   selector: 'app-experience',
   imports: [LucideAngularModule],
-  templateUrl: './experience.component.html',
+  templateUrl: './experience.html'
 })
-export class ExperienceComponent {
+export class Experience {
   experiences = EXPERIENCES;
   icons = {
-    moveUpRight: MoveUpRight,
+    moveUpRight: MoveUpRight
   };
 }

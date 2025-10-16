@@ -11,14 +11,10 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular/build:application",
           "options": {
-            "outputPath": "dist/musanzi.me",
-            "index": "src/index.html",
+            "allowedCommonJsDependencies": ["aos"],
             "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
               {
@@ -26,15 +22,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.css"
-            ],
-            "scripts": [],
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "src/server.ts"
-            }
+            "styles": ["src/styles.css", "node_modules/aos/dist/aos.css"]
           },
           "configurations": {
             "production": {
@@ -61,7 +49,7 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
               "buildTarget": "musanzi.me:build:production"
@@ -73,15 +61,11 @@
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n"
+          "builder": "@angular/build:extract-i18n"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular/build:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
               {
@@ -89,28 +73,13 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.css"
-            ],
-            "scripts": []
-          }
-        },
-        "lint": {
-          "builder": "@angular-eslint/builder:lint",
-          "options": {
-            "lintFilePatterns": [
-              "src/**/*.ts",
-              "src/**/*.html"
-            ]
+            "styles": ["src/styles.css", "node_modules/aos/dist/aos.css"]
           }
         }
       }
     }
   },
   "cli": {
-    "analytics": "28c530ef-b66d-4877-81c8-5dd1f7d9caaf",
-    "schematicCollections": [
-      "angular-eslint"
-    ]
+    "analytics": "b8769148-83ab-4da7-9aff-e314394ad1d8"
   }
 }

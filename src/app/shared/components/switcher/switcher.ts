@@ -1,22 +1,22 @@
 import { CommonModule, DOCUMENT } from '@angular/common';
-import { afterRender, Component, Inject, signal } from '@angular/core';
+import { Component, effect, Inject, signal } from '@angular/core';
 import { LucideAngularModule, MoonStar, Sun } from 'lucide-angular';
 
 @Component({
   selector: 'app-switcher',
   standalone: true,
   imports: [LucideAngularModule, CommonModule],
-  templateUrl: './switcher.component.html',
+  templateUrl: './switcher.html'
 })
-export class SwitcherComponent {
+export class Switcher {
   isDark = signal<boolean>(false);
   icons = {
     light: MoonStar,
-    dark: Sun,
+    dark: Sun
   };
 
   constructor(@Inject(DOCUMENT) private document: Document) {
-    afterRender(() => {
+    effect(() => {
       const storedTheme = window.localStorage.getItem('isDark');
       this.isDark = storedTheme
         ? signal(storedTheme === 'true')
