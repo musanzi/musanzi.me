@@ -1,0 +1,71 @@
+---
+import profileImage from "../assets/wilfried.jpeg";
+import "../styles/global.css";
+import Footer from "./footer.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Wilfried Musanzi | Fullstack Web Developer",
+  description = "Wilfried Musanzi's portfolio. Fullstack Web Developer building reliable Angular and NestJS business platforms.",
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const socialImageURL = new URL(profileImage.src, Astro.site);
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Wilfried Musanzi",
+  url: Astro.site,
+  image: socialImageURL,
+  jobTitle: "Fullstack Web Developer",
+  sameAs: [
+    "https://github.com/musanzi",
+    "https://www.linkedin.com/in/wilfried-musanzi-197381205",
+  ],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Wilfried Musanzi" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#181715" />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Wilfried Musanzi" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={socialImageURL} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content={profileImage.width.toString()} />
+    <meta property="og:image:height" content={profileImage.height.toString()} />
+    <meta property="og:image:alt" content="Wilfried Musanzi" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageURL} />
+    <meta name="twitter:image:alt" content="Wilfried Musanzi" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </head>
+  <body class="mx-auto w-[calc(100%-3rem)] max-w-4xl py-6">
+    <slot />
+    <Footer />
+  </body>
+</html>

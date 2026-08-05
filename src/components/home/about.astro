@@ -1,0 +1,47 @@
+---
+import Icon from '../shared/icon.astro'
+
+const workPrinciples = [
+  'Understand the business problem before committing to the technical shape.',
+  'Define the core features clearly and keep implementation complexity proportional.',
+  'Build with maintainability, deployment, and team onboarding in mind.',
+  'Deploy early, improve iteratively, and document decisions where they matter.'
+]
+---
+
+<section id="about" class="mb-14 scroll-mt-8 md:mb-22">
+  <div class="mb-3 flex items-center gap-2.5">
+    <p class="inline-flex items-center gap-1.5 text-sm leading-4 font-semibold tracking-wide whitespace-nowrap text-neutral-400">
+      <Icon class="size-4 " name="list-checks" />
+      About
+    </p>
+    <div class="h-px w-full bg-neutral-700"></div>
+  </div>
+  <h2 class="mb-5 text-2xl leading-tight font-bold text-neutral-50">
+    I work across product, code, and deployment.
+  </h2>
+  <div class="flex flex-col gap-4 text-neutral-400">
+    <p>
+      I specialize in Angular, NestJS, TypeScript, Nx monorepos, Docker, and CI/CD workflows. My work combines software
+      engineering, product thinking, and deployment experience to deliver practical web applications for businesses,
+      NGOs, and innovation ecosystems.
+    </p>
+    <p>
+      Before writing code, I take time to understand how a business actually operates, what slows a team down, and where
+      a solution needs to fit the existing workflow instead of adding complexity on top of it.
+    </p>
+  </div>
+  <h2 class="mb-6 mt-6 text-xl font-medium text-neutral-50">
+    How I approach delivery.
+  </h2>
+  <ol class="grid max-w-2xl">
+    {workPrinciples.map((principle, index) => (
+      <li class="relative grid grid-cols-[1.75rem_1fr] gap-1.5 pb-5 after:absolute after:top-7 after:bottom-0 after:left-3.5 after:w-px after:bg-neutral-700 last:pb-0 last:after:hidden">
+        <span class="relative z-10 flex size-6 items-center justify-center rounded-full border border-primary-100 bg-primary-50 text-[0.7rem] font-bold tabular-nums text-primary-700">
+          {index + 1}
+        </span>
+        <p class="text-neutral-400">{principle}</p>
+      </li>
+    ))}
+  </ol>
+</section>

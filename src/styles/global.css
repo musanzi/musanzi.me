@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme {
+  --font-googleSans: "Google Sans", sans-serif;
+  --color-primary-50: #fff4f0;
+  --color-primary-100: #ffe6dc;
+  --color-primary-200: #ffc9b8;
+  --color-primary-300: #ffa589;
+  --color-primary-400: #ff8258;
+  --color-primary-500: #ff7345;
+  --color-primary-600: #ff6635;
+  --color-primary-700: #e94b1b;
+  --color-primary-800: #c23d17;
+  --color-primary-900: #9f3519;
+  --color-primary-950: #561708;
+  --color-surface: #181715;
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-surface font-googleSans;
+  }
+
+  ::selection {
+    background: var(--color-primary-600);
+    color: var(--color-surface);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    scroll-behavior: auto;
+  }
+}
