@@ -2,15 +2,6 @@
 
 The source code for [musanzi.me](https://musanzi.me), Wilfried Musanzi's personal portfolio. The site introduces my work as a full-stack web developer and presents selected projects as individual case studies.
 
-## Built with
-
-- [Astro](https://astro.build/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- TypeScript
-- [pnpm](https://pnpm.io/)
-
-The site is statically generated and includes canonical metadata, structured data, social sharing metadata, and an XML sitemap.
-
 ## Getting started
 
 ### Prerequisites
@@ -34,12 +25,12 @@ Astro will print the local development URL in the terminal, typically `http://lo
 
 ## Available commands
 
-| Command | Description |
-| --- | --- |
-| `pnpm dev` | Start the local development server |
-| `pnpm build` | Create a production build in `dist/` |
-| `pnpm preview` | Preview the production build locally |
-| `pnpm astro -- <command>` | Run an Astro CLI command |
+| Command                   | Description                          |
+| ------------------------- | ------------------------------------ |
+| `pnpm dev`                | Start the local development server   |
+| `pnpm build`              | Create a production build in `dist/` |
+| `pnpm preview`            | Preview the production build locally |
+| `pnpm astro -- <command>` | Run an Astro CLI command             |
 
 ## Project structure
 
