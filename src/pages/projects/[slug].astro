@@ -1,6 +1,6 @@
 ---
-import ProjectDetail from './project-detail.astro'
-import { projects, type Project } from '../../data/projects'
+import ProjectDetail from '../../components/projects/project-detail.astro'
+import { projects, type IProject } from '../../data/projects'
 import Layout from '../../layouts/Layout.astro'
 
 export function getStaticPaths() {
@@ -11,12 +11,12 @@ export function getStaticPaths() {
 }
 
 interface Props {
-  project: Project
+  project: IProject
 }
 
 const { project } = Astro.props
 ---
 
 <Layout title={`${project.name} | Wilfried Musanzi`} description={project.metaDescription}>
-  <ProjectDetail {...project} />
+  <ProjectDetail project={project} />
 </Layout>
