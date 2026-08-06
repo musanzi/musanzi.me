@@ -1,7 +1,7 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
 
-type IconName = 'arrow-right' | 'arrow-up-right' | 'folder-code' | 'github' | 'linkedin' | 'list-checks' | 'mail' | 'send' | 'user-round'
+type IconName = 'arrow-right' | 'arrow-up-right' | 'circle-check' | 'folder-code' | 'github' | 'linkedin' | 'list-checks' | 'mail' | 'send' | 'user-round'
 
 interface Props extends HTMLAttributes<'svg'> {
   name: IconName
@@ -27,6 +27,12 @@ const { name, ...attributes } = Astro.props
     </>
   )}
   {name === 'arrow-up-right' && <path d="M7 17 17 7M7 7h10v10" />}
+  {name === 'circle-check' && (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="m8.5 12 2.25 2.25L15.5 9.5" />
+    </>
+  )}
   {name === 'folder-code' && (
     <>
       <path d="M10 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8Z" />

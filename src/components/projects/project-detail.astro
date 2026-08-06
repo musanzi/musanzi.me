@@ -7,56 +7,113 @@ interface Props {
 }
 
 const { project } = Astro.props
+const projectLinks = project.links ?? []
 ---
 
 <article class="pt-8 text-neutral-300 md:pt-12">
   <a
-    class="mb-9 inline-flex items-center gap-2 text-sm font-medium text-neutral-400 transition hover:text-primary-400 focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:outline-none"
+    class="mb-10 inline-flex items-center gap-2 text-sm font-medium text-neutral-400 transition hover:text-primary-400 focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:outline-none"
     href="/#projects">
     <span aria-hidden="true">&larr;</span>
     Back to projects
   </a>
 
-  <header class="mb-12 border-b border-neutral-700 pb-10">
-    <h1 class="max-w-3xl text-3xl leading-tight font-bold text-neutral-50 md:text-5xl">{project.name}</h1>
-    <p class="mt-5 max-w-3xl text-lg leading-relaxed text-neutral-400">{project.summary}</p>
+  <header class="mb-8 md:mb-10">
+    <p class="mb-3 text-sm font-semibold tracking-wide text-primary-400 uppercase">Project case study</p>
+    <h1 class="max-w-3xl text-4xl leading-tight font-bold tracking-tight text-neutral-50 md:text-6xl">
+      {project.name}
+    </h1>
+    <p class="mt-5 max-w-3xl text-lg leading-relaxed text-neutral-400 md:text-xl">
+      {project.summary}
+    </p>
+    {projectLinks.length > 0 && (
+      <div class="mt-7 flex flex-wrap gap-3" aria-label="Project links">
+        {projectLinks.map((link) => (
+          <a
+            class:list={[
+              'inline-flex items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:outline-none',
+              link.type === 'live'
+                ? 'bg-primary-500 text-neutral-950 hover:bg-primary-400'
+                : 'border border-neutral-700 bg-neutral-900 text-neutral-200 hover:border-primary-700 hover:text-primary-400',
+            ]}
+            href={link.url}
+            target="_blank"
+            rel="noreferrer">
+            <Icon class="size-4" name={link.type === 'github' ? 'github' : 'arrow-up-right'} />
+            {link.label}
+          </a>
+        ))}
+      </div>
+    )}
   </header>
 
-  <div class="grid gap-10 md:grid-cols-[minmax(0,1fr)_15rem] md:gap-14">
-    <div class="space-y-10">
+  <figure class="mb-14 h-64 overflow-hidden rounded-2xl border border-neutral-700 bg-neutral-950 shadow-2xl shadow-black/20 sm:h-80 md:mb-18 md:h-112">
+    <img
+      class="size-full object-cover"
+      src={project.image.src}
+      alt={project.imageAlt}
+      width={project.image.width}
+      height={project.image.height}
+      loading="eager"
+      decoding="async"
+      fetchpriority="high"
+    />
+  </figure>
+
+  <div class="space-y-14 md:space-y-18">
+    <div class="grid gap-10 md:grid-cols-2 md:gap-12">
       <section aria-labelledby="problem-title">
-        <h2 id="problem-title" class="mb-3 text-2xl font-bold text-primary-400">The problem</h2>
+        <p class="mb-3 text-sm font-semibold text-primary-400">01</p>
+        <h2 id="problem-title" class="mb-4 text-2xl font-bold text-neutral-50">The problem</h2>
         <p class="leading-relaxed text-neutral-400">{project.problem}</p>
       </section>
 
       <section aria-labelledby="solution-title">
-        <h2 id="solution-title" class="mb-3 text-2xl font-bold text-primary-400">The solution</h2>
+        <p class="mb-3 text-sm font-semibold text-primary-400">02</p>
+        <h2 id="solution-title" class="mb-4 text-2xl font-bold text-neutral-50">The solution</h2>
         <p class="leading-relaxed text-neutral-400">{project.solution}</p>
       </section>
+    </div>
 
-      <section aria-labelledby="contribution-title">
-        <h2 id="contribution-title" class="mb-4 text-2xl font-bold text-primary-400">What I contributed</h2>
-        <ul class="grid gap-3 sm:grid-cols-2">
-          {project.responsibilities.map((responsibility) => (
-            <li class="flex gap-3 rounded-lg border border-neutral-800 bg-neutral-900/50 p-4 text-sm leading-relaxed text-neutral-300">
-              <span class="mt-2 size-1.5 shrink-0 rounded-full bg-primary-500" aria-hidden="true"></span>
-              {responsibility}
-            </li>
-          ))}
-        </ul>
-      </section>
+    <section aria-labelledby="contribution-title">
+      <div class="mb-6 border-t border-neutral-800 pt-8">
+        <p class="mb-3 text-sm font-semibold text-primary-400">03</p>
+        <h2 id="contribution-title" class="text-2xl font-bold text-neutral-50">What I contributed</h2>
+      </div>
+      <ul class="grid gap-3 sm:grid-cols-2">
+        {project.responsibilities.map((responsibility) => (
+          <li class="flex gap-3 rounded-xl border border-neutral-800 bg-neutral-900/50 p-4 leading-relaxed text-neutral-300">
+            <span class="mt-2 size-1.5 shrink-0 rounded-full bg-primary-500" aria-hidden="true"></span>
+            {responsibility}
+          </li>
+        ))}
+      </ul>
+    </section>
 
-      <section aria-labelledby="outcomes-title">
-        <h2 id="outcomes-title" class="mb-4 text-2xl font-bold text-neutral-50">Highlights and outcomes</h2>
-        <ul class="space-y-3">
-          {project.highlights.map((highlight) => (
-            <li class="flex gap-3 leading-relaxed text-neutral-400">
-              <Icon class="mt-1 size-4 shrink-0 text-primary-400" name="list-checks" />
-              {highlight}
-            </li>
-          ))}
-        </ul>
-      </section>
+    <section aria-labelledby="outcomes-title">
+      <div class="mb-6 border-t border-neutral-800 pt-8">
+        <p class="mb-3 text-sm font-semibold text-primary-400">04</p>
+        <h2 id="outcomes-title" class="text-2xl font-bold text-neutral-50">Highlights and outcomes</h2>
+      </div>
+      <ul class="grid gap-3 md:grid-cols-2">
+        {project.highlights.map((highlight) => (
+          <li class="flex items-start gap-4 rounded-xl border border-neutral-800 bg-neutral-900/50 p-4 leading-relaxed text-neutral-300">
+            <span class="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary-950 text-primary-400 ring-1 ring-primary-800/60">
+              <Icon class="size-4" name="circle-check" />
+            </span>
+            <span>{highlight}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <div class="border-t border-neutral-800 pt-8">
+      <a
+        class="inline-flex items-center gap-2 text-sm font-semibold text-primary-400 transition hover:text-primary-300 focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:outline-none"
+        href="/#projects">
+        <span aria-hidden="true">&larr;</span>
+        Explore more projects
+      </a>
     </div>
   </div>
 </article>
