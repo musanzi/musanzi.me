@@ -1,0 +1,30 @@
+---
+import { getCollection } from 'astro:content'
+import BlogCard from '../blog/blog-card.astro'
+import Icon from '../shared/icon.astro'
+import { sortPosts } from '../../lib/blog'
+
+const posts = sortPosts(await getCollection('blog'))
+---
+
+<section id="blog" class="mb-14 scroll-mt-8 md:mb-22" aria-labelledby="blog-title">
+  <div class="mb-3 flex items-center gap-2.5">
+    <p class="inline-flex items-center gap-1.5 text-sm leading-4 font-semibold tracking-wide whitespace-nowrap text-neutral-400">
+      <Icon class="size-4" name="file-text" />
+      Latest writing
+    </p>
+    <div class="h-px w-full bg-neutral-700"></div>
+  </div>
+
+  <div class="mb-7 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+    <h2 id="blog-title" class="text-2xl leading-tight font-bold text-neutral-50">Notes on software and the work around it.</h2>
+    <a class="inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold text-primary-400 transition hover:text-primary-300 focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:outline-none" href="/blog">
+      View all posts
+      <Icon class="size-3.5" name="arrow-right" />
+    </a>
+  </div>
+
+  <div class="grid gap-4 md:grid-cols-2">
+    {posts.slice(0, 2).map((post) => <BlogCard post={post} />)}
+  </div>
+</section>

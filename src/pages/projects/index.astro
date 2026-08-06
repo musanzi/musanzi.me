@@ -1,0 +1,23 @@
+---
+import ProjectCard from '../../components/projects/project-card.astro'
+import { projects } from '../../data/projects'
+import Layout from '../../layouts/Layout.astro'
+---
+
+<Layout title="Projects | Wilfried Musanzi" description="Selected projects and case studies from Wilfried Musanzi, spanning software platforms, event operations, and technical education.">
+  <main class="pt-8 md:pt-12">
+    <a class="inline-flex items-center gap-2 text-sm font-medium text-neutral-400 transition hover:text-primary-400 focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:outline-none" href="/">
+      <span aria-hidden="true">&larr;</span>
+      Back home
+    </a>
+    <header class="mt-10 mb-10 md:mb-12">
+      <h1 class="mt-3 text-4xl leading-tight font-bold tracking-tight text-neutral-50 md:text-6xl">Projects</h1>
+      <p class="mt-5 max-w-2xl text-lg leading-relaxed text-neutral-400">
+        Selected platforms, technical initiatives, and event systems I have helped design, build, and operate.
+      </p>
+    </header>
+    <div class="grid gap-4 md:grid-cols-2">
+      {projects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </main>
+</Layout>
