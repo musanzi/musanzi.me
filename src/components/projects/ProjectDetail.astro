@@ -1,5 +1,5 @@
 ---
-import Icon from '../../components/shared/icon.astro'
+import Icon from '../shared/Icon.astro'
 import type { IProject } from '../../data/projects'
 
 interface Props {
@@ -30,7 +30,7 @@ const projectLinks = project.links ?? []
         {projectLinks.map((link) => (
           <a
             class:list={[
-              'inline-flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm font-semibold transition focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:outline-none',
+              'inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:outline-none',
               link.type === 'live'
                 ? 'bg-primary-500 text-white hover:bg-primary-400'
                 : 'border border-neutral-700 bg-neutral-900 text-neutral-200 hover:border-primary-700 hover:text-primary-400',
