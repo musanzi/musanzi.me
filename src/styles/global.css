@@ -1,7 +1,7 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
-  --font-googleSans: "Google Sans", sans-serif;
+  --font-googleSans: 'Google Sans', sans-serif;
   --color-primary-50: #fff4f0;
   --color-primary-100: #ffe6dc;
   --color-primary-200: #ffc9b8;
@@ -40,7 +40,7 @@
 
 @layer components {
   .blog-prose {
-    @apply text-base leading-6 text-neutral-300 md:text-lg;
+    @apply text-base leading-7 text-neutral-300 md:text-lg;
   }
 
   .blog-prose h2 {
