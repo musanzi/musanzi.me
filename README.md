@@ -39,14 +39,14 @@ public/                  Static files copied as-is
 src/
 ├── assets/              Images processed by Astro
 ├── components/          Home and project UI components
-├── data/projects.ts     Project case-study content
+├── content/projects/    Markdown project case studies
 ├── layouts/             Shared page layout and metadata
 ├── pages/               File-based routes
 └── styles/global.css    Global styles and Tailwind setup
 astro.config.mjs         Astro, sitemap, and Tailwind configuration
 ```
 
-Project pages are generated from the entries in `src/data/projects.ts`. Add an entry there, together with its image in `src/assets/`, to publish another case study at `/projects/<slug>`.
+Project pages are generated from Markdown files in `src/content/projects/`. Add a Markdown file there, together with its image in `src/assets/`, to publish another case study at `/projects/<slug>`.
 
 ## Production build
 

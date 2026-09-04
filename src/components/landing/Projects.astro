@@ -1,9 +1,10 @@
 ---
+import { getCollection } from 'astro:content'
 import Icon from '../shared/Icon.astro'
 import ProjectCard from '../projects/ProjectCard.astro'
-import { projects } from '../../data/projects'
+import { sortProjects } from '../../lib/projects'
 
-const featuredProjects = projects.slice(0, 2)
+const featuredProjects = sortProjects(await getCollection('projects')).filter((project) => project.data.featured)
 ---
 
 <section id="projects" class="mb-14 scroll-mt-8 md:mb-22" aria-labelledby="projects-title">
@@ -18,7 +19,7 @@ const featuredProjects = projects.slice(0, 2)
 
   <div class="mb-7 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
     <h2 id="projects-title" class="text-2xl leading-tight font-bold text-neutral-50">
-      Products built around real needs and projects.
+      Products and systems built around real needs.
     </h2>
     <a class="inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold text-primary-400 transition hover:text-primary-300 focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:outline-none" href="/projects">
       View all projects

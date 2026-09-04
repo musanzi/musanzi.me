@@ -23,7 +23,7 @@ The final judgment remains mine because I understand the actual problem, the use
 
 ## I generate only what I can review
 
-I use AI during implementation, especially for repetitive code, but I generate one feature at a time—not an entire application. I never want to produce more code than I can honestly review.
+I use AI during implementation, especially for repetitive code, but I generate one feature at a time instead of an entire application. I never want to produce more code than I can honestly review.
 
 This limit helps me avoid technical debt and preserve my identity as a developer: the way I think, name functions, organize code, and choose the right level of abstraction. I want AI to increase my output without taking those decisions away from me.
 
