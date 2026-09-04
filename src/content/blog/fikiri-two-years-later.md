@@ -14,7 +14,7 @@ Two years after delivering Fikiri, the client called me again. He wanted a more 
 
 The call meant a lot to me. V1 had done its job, and the client trusted me to take it further. I also had an advantage that no new developer would have had on the first day: I understood the product, its history, and the decisions hidden inside its code.
 
-[Fikiri](https://fikiri.co) is a platform built for a [United Nations Development Programme](https://www.undp.org/) initiative in the Democratic Republic of the Congo. An administrator launches a call for solutions, people submit their ideas, reviewers evaluate them, and the administrator selects the winners. [Olivier Bampendi](https://www.linkedin.com/in/olimuf/), who led the innovation and digital transformation work behind the platform, asked me to return for V2.
+[Fikiri](https://fikiri.co) is a platform built for a [United Nations Development Programme](https://www.undp.org/) initiative in the Democratic Republic of the Congo. An administrator launches a call for solutions, people submit their ideas, reviewers evaluate them, and the administrator selects the winners. [Mr. Olivier Bampendi](https://www.linkedin.com/in/olimuf/), who led the innovation and digital transformation work behind the platform, asked me to return for V2.
 
 Our relationship had continued after the first delivery through maintenance and technical advice. That continuity mattered. The client already knew how I worked, and I already knew how to translate his requests into decisions about the product. Technical ability opened the relationship, but communication and reliability sustained it.
 
