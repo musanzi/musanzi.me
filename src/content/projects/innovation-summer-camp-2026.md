@@ -4,7 +4,7 @@ summary: 'I managed and mentored a month-long CINOLU program that introduced 13 
 description: 'How I designed and adapted two learning tracks for children and young adults with very different backgrounds.'
 image: '../../assets/ISC2026.jpeg'
 imageAlt: 'Innovation Summer Camp 2026 registration poster'
-role: 'Project Manager and Mentor'
+role: 'Project Manager & Mentor'
 organization: 'CINOLU'
 period: 'August 2026'
 order: 4

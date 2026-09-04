@@ -4,7 +4,7 @@ summary: 'I led the development of a UNDP innovation platform used by more than 
 description: 'How I built Fikiri, returned two years later to make it more flexible, and migrated thousands of existing accounts before the next call for solutions.'
 image: '../../assets/fikiri.png'
 imageAlt: 'Conceptual dashboard for the Fikiri innovation platform'
-role: 'Project Lead and Fullstack Engineer'
+role: 'Project Lead & Fullstack Engineer'
 organization: 'UNDP Innovation Lab'
 period: 'Nov 2023 to Jun 2024 · Aug to Sep 2026'
 order: 1
