@@ -31,7 +31,7 @@ If I cannot understand, question, and maintain generated code, then the producti
 
 ## Fundamentals matter more than productivity
 
-My biggest concern is becoming unable to work without AI—sacrificing skills on the altar of productivity until I can no longer think critically or judge its output.
+My biggest concern is becoming unable to work without AI sacrificing skills on the altar of productivity until I can no longer think critically or judge its output.
 
 That is why I believe developers should first learn how to do the work themselves and use AI for tasks whose results they can evaluate honestly. I still learn through documentation, videos, and courses. I may ask AI specific questions about a bug or error, but I try the solution, test it, research further, and continue until I understand it fully.
 

@@ -1,6 +1,6 @@
 # musanzi.me
 
-The source code for [musanzi.me](https://musanzi.me), Wilfried Musanzi's personal portfolio. The site introduces my work as a full-stack web developer and presents selected projects as individual case studies.
+The source code for [musanzi.me](https://musanzi.me), Wilfried Musanzi's personal portfolio. The site introduces my work as a Fullstack web developer and presents selected projects as individual case studies.
 
 ## Getting started
 
