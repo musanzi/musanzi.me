@@ -22,12 +22,6 @@ links:
   - label: 'Visit live site'
     url: 'https://cinolu.org'
     type: 'live'
-  - label: 'Web repository'
-    url: 'https://github.com/musanzi/cinolu.org'
-    type: 'github'
-  - label: 'API repository'
-    url: 'https://github.com/musanzi/api.cinolu.org'
-    type: 'github'
 ---
 
 ## Why we needed OneStop
@@ -40,7 +34,7 @@ We built OneStop to bring that work together. Entrepreneurs use one account to f
 
 ## What I built
 
-I worked with a UI/UX designer and handled the technical delivery. I designed the database, developed the [NestJS API](https://github.com/musanzi/api.cinolu.org), and built the [Angular participant and administration applications](https://github.com/musanzi/cinolu.org).
+I worked with a UI/UX designer and handled the technical delivery. I designed the database, developed the NestJS API, and built the Angular participant and administration applications.
 
 The administration dashboard lets staff create programs and manage the people taking part. Entrepreneurs can find opportunities and register without learning a different process for every program.
 

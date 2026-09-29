@@ -23,12 +23,6 @@ links:
   - label: 'Visit live site'
     url: 'https://fikiri.co'
     type: 'live'
-  - label: 'Web repository'
-    url: 'https://github.com/cinolu-software/fikiri.co'
-    type: 'github'
-  - label: 'API repository'
-    url: 'https://github.com/cinolu-software/api.fikiri.co'
-    type: 'github'
 ---
 
 ## What Fikiri does
@@ -47,7 +41,7 @@ We built V1 while the first call was still taking shape. Its application fields 
 
 When UNDP invited me back for V2, they wanted to manage calls, application forms, evaluation phases, reviewers, and scores themselves.
 
-I replaced the fixed fields with a form definition stored as JSON. Each question has a stable identifier and metadata such as its label and type. Applications store responses against those identifiers, allowing an administrator to change labels or ordering without breaking existing answers. The implementation lives across the public [Angular repository](https://github.com/cinolu-software/fikiri.co) and [NestJS API repository](https://github.com/cinolu-software/api.fikiri.co).
+I replaced the fixed fields with a form definition stored as JSON. Each question has a stable identifier and metadata such as its label and type. Applications store responses against those identifiers, allowing an administrator to change labels or ordering without breaking existing answers.
 
 I used the same model for evaluations. Administrators define the questions for each phase and choose how many solutions each reviewer receives. The assignment logic selects solutions that have not yet been assigned in that phase and calculates scores from the reviewer's numeric answers.
 
