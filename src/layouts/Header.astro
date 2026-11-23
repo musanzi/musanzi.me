@@ -16,7 +16,8 @@ function currentPage(href: string) {
 ---
 
 <header class="sticky top-0 z-40 border-b border-neutral-700/70 bg-surface" data-site-header>
-  <div class="page-shell flex h-16 items-center gap-4 border-x border-neutral-700/70">
+  <div class="mx-auto max-w-[72rem] px-3 md:px-5">
+  <div class="flex h-16 items-center gap-4 border-x border-neutral-700/70 px-3 md:px-5">
     <a class="group flex shrink-0 items-center gap-3 rounded-full" href="/" aria-label="Wilfried Musanzi, accueil">
       <Image
         class="size-10 rounded-full object-cover object-[50%_20%] ring-2 ring-neutral-700 transition-shadow duration-200 group-hover:ring-primary-500"
@@ -80,12 +81,15 @@ function currentPage(href: string) {
     </div>
   </div>
 
+  </div>
+
   <div
     id="site-menu"
     class="absolute inset-x-0 top-[calc(100%+1px)] grid lg:hidden grid-rows-[0fr] border-transparent data-[open]:border-b bg-surface/95 backdrop-blur-md transition-[grid-template-rows,border-color] duration-300 ease-out data-[open]:grid-rows-[1fr] data-[open]:border-neutral-700/70 data-[open]:shadow-2xl data-[open]:shadow-black/40"
     data-menu>
     <div class="overflow-hidden" inert>
-      <nav class="page-shell border-x border-neutral-700/70 py-4" aria-label="Navigation principale">
+      <nav class="mx-auto max-w-[72rem] px-3 md:px-5" aria-label="Navigation principale mobile">
+        <div class="border-x border-neutral-700/70 px-3 py-4 md:px-5">
         <ul class="grid gap-1 sm:flex sm:items-center sm:justify-end">
           {
             links.map((link, index) => (
@@ -119,7 +123,7 @@ function currentPage(href: string) {
             </a>
           </li>
         </ul>
-      </nav>
+      </div></nav>
     </div>
   </div>
 </header>
