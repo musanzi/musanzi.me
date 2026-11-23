@@ -8,6 +8,13 @@ export default defineConfig({
   devToolbar: {
     enabled: false,
   },
+  redirects: {
+    "/projects": "/#about",
+    "/projects/fikiri": "/#about",
+    "/projects/cinolu-onestop": "/#about",
+    "/projects/kbm-2026": "/#about",
+    "/projects/innovation-summer-camp-2026": "/#about",
+  },
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],
