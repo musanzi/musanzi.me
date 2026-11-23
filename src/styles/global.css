@@ -16,6 +16,8 @@
   --color-primary-950: #561708;
   --color-primary-action: #d4421a;
   --color-surface: #181715;
+  --color-card: #23211e;
+  --color-card-raised: #302d29;
 }
 
 @utility page-shell {

@@ -1,6 +1,7 @@
 ---
+import { Image } from 'astro:assets'
+import portrait from '../assets/wilfried.jpeg'
 import Icon from '../components/shared/Icon.astro'
-import Logo from '../components/shared/Logo.astro'
 
 const links = [
   { label: 'À propos', href: '/#a-propos' },
@@ -14,60 +15,128 @@ function currentPage(href: string) {
 }
 ---
 
-<header class="sticky top-0 z-40 border-b border-neutral-800 bg-surface">
-  <div class="page-shell flex h-16 items-center gap-8">
-    <a class="group shrink-0 rounded-[0.6rem]" href="/" aria-label="Wilfried Musanzi, accueil">
-      <Logo class="size-9 text-neutral-700 transition-colors duration-200 group-hover:text-primary-600" />
+<header class="sticky top-0 z-40 border-b border-neutral-800 bg-surface" data-site-header>
+  <div class="page-shell flex h-16 items-center gap-4">
+    <a class="group flex shrink-0 items-center gap-3 rounded-full" href="/" aria-label="Wilfried Musanzi, accueil">
+      <Image
+        class="size-10 rounded-full object-cover object-[50%_20%] ring-2 ring-neutral-700 transition-shadow duration-200 group-hover:ring-primary-500"
+        src={portrait}
+        widths={[80, 160]}
+        sizes="40px"
+        loading="eager"
+        alt="" />
+      <span class="hidden text-sm font-semibold text-neutral-100 sm:block">Wilfried Musanzi</span>
     </a>
-
-    <nav class="hidden md:block" aria-label="Navigation principale">
-      <ul class="flex items-center gap-1">
-        {
-          links.map((link) => (
-            <li>
-              <a
-                class="rounded-md px-3 py-2 text-sm text-neutral-400 transition-colors hover:bg-neutral-800/70 hover:text-neutral-50 aria-[current=page]:bg-neutral-800 aria-[current=page]:text-neutral-50"
-                href={link.href}
-                aria-current={currentPage(link.href)}>
-                {link.label}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </nav>
 
     <div class="ml-auto flex items-center gap-2">
       <a
-        class="grid size-10 place-items-center rounded-md text-neutral-400 transition-colors hover:bg-neutral-800/70 hover:text-neutral-50"
-        href="https://github.com/musanzi"
-        target="_blank"
-        rel="noreferrer"
-        aria-label="GitHub de Wilfried Musanzi">
-        <Icon class="size-5" name="github" />
-      </a>
-      <a
-        class="inline-flex min-h-10 items-center rounded-lg bg-primary-action px-3.5 text-sm font-semibold whitespace-nowrap text-white transition-colors hover:bg-primary-800"
+        class="hidden min-h-10 items-center rounded-lg bg-primary-action px-3.5 text-sm font-semibold whitespace-nowrap text-white transition-colors hover:bg-primary-800 sm:inline-flex"
         href="/#contact">
         Me contacter
       </a>
+      <button
+        type="button"
+        class="group relative grid size-10 place-items-center rounded-md text-neutral-200 transition-colors hover:bg-neutral-800/70 hover:text-neutral-50"
+        aria-label="Ouvrir le menu"
+        aria-expanded="false"
+        aria-controls="site-menu"
+        data-menu-toggle>
+        <span class="sr-only">Menu</span>
+        <span
+          class="absolute h-0.5 w-5 -translate-y-1.5 rounded-full bg-current transition-transform duration-300 ease-out group-aria-expanded:translate-y-0 group-aria-expanded:rotate-45"
+          aria-hidden="true"></span>
+        <span
+          class="absolute h-0.5 w-5 rounded-full bg-current transition-[opacity,transform] duration-200 group-aria-expanded:scale-x-0 group-aria-expanded:opacity-0"
+          aria-hidden="true"></span>
+        <span
+          class="absolute h-0.5 w-5 translate-y-1.5 rounded-full bg-current transition-transform duration-300 ease-out group-aria-expanded:translate-y-0 group-aria-expanded:-rotate-45"
+          aria-hidden="true"></span>
+      </button>
     </div>
   </div>
 
-  <nav class="border-t border-neutral-800 md:hidden" aria-label="Navigation principale mobile">
-    <ul class="page-shell flex items-center gap-1 py-1.5">
-      {
-        links.map((link) => (
-          <li>
+  <div
+    id="site-menu"
+    class="absolute inset-x-0 top-full grid grid-rows-[0fr] border-b border-transparent bg-surface/95 backdrop-blur-md transition-[grid-template-rows,border-color] duration-300 ease-out data-[open]:grid-rows-[1fr] data-[open]:border-neutral-800 data-[open]:shadow-2xl data-[open]:shadow-black/40"
+    data-menu>
+    <div class="overflow-hidden" inert>
+      <nav class="page-shell py-4" aria-label="Navigation principale">
+        <ul class="grid gap-1 sm:flex sm:items-center sm:justify-end">
+          {
+            links.map((link, index) => (
+              <li
+                class="-translate-y-1 opacity-0 transition-[opacity,transform] duration-300 ease-out in-data-[open]:translate-y-0 in-data-[open]:opacity-100"
+                style={`transition-delay: ${80 + index * 40}ms`}>
+                <a
+                  class="flex min-h-11 items-center rounded-lg px-3 text-base text-neutral-300 transition-colors hover:bg-neutral-800/70 hover:text-neutral-50 aria-[current=page]:bg-neutral-800 aria-[current=page]:text-neutral-50"
+                  href={link.href}
+                  aria-current={currentPage(link.href)}
+                  data-menu-link>
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+          <li class="flex gap-2 pt-2 sm:ml-2 sm:pt-0">
             <a
-              class="inline-flex min-h-10 items-center rounded-md px-3 text-sm text-neutral-400 transition-colors hover:text-neutral-50 aria-[current=page]:text-neutral-50"
-              href={link.href}
-              aria-current={currentPage(link.href)}>
-              {link.label}
+              class="inline-flex min-h-11 flex-1 items-center justify-center rounded-lg bg-primary-action sm:hidden px-3.5 text-sm font-semibold text-white transition-colors hover:bg-primary-800"
+              href="/#contact"
+              data-menu-link>
+              Me contacter
+            </a>
+            <a
+              class="grid size-11 place-items-center rounded-lg border border-neutral-700 text-neutral-300 transition-colors hover:text-neutral-50"
+              href="https://github.com/musanzi"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="GitHub de Wilfried Musanzi">
+              <Icon class="size-5" name="github" />
             </a>
           </li>
-        ))
-      }
-    </ul>
-  </nav>
+        </ul>
+      </nav>
+    </div>
+  </div>
 </header>
+
+<script>
+  function setupMenu() {
+    const header = document.querySelector<HTMLElement>('[data-site-header]')
+    const toggle = header?.querySelector<HTMLButtonElement>('[data-menu-toggle]')
+    const menu = header?.querySelector<HTMLElement>('[data-menu]')
+    const panel = menu?.firstElementChild as HTMLElement | null
+    if (!header || !toggle || !menu || !panel) return
+
+    function setOpen(open: boolean) {
+      toggle!.setAttribute('aria-expanded', String(open))
+      toggle!.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu')
+      menu!.toggleAttribute('data-open', open)
+      panel!.inert = !open
+    }
+
+    toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'))
+    menu.querySelectorAll('[data-menu-link]').forEach((link) => link.addEventListener('click', () => setOpen(false)))
+
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false)
+        toggle.focus()
+      }
+    }
+    const onClick = (event: MouseEvent) => {
+      if (!header.contains(event.target as Node)) setOpen(false)
+    }
+    document.addEventListener('keydown', onKey)
+    document.addEventListener('click', onClick)
+    document.addEventListener(
+      'astro:before-swap',
+      () => {
+        document.removeEventListener('keydown', onKey)
+        document.removeEventListener('click', onClick)
+      },
+      { once: true }
+    )
+  }
+
+  document.addEventListener('astro:page-load', setupMenu)
+</script>
