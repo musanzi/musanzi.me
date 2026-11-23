@@ -1,0 +1,107 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content'
+import BackLink from '../../../components/courses/BackLink.astro'
+import ChapterIndex from '../../../components/courses/ChapterIndex.astro'
+import TagList from '../../../components/courses/TagList.astro'
+import Icon from '../../../components/shared/Icon.astro'
+import Layout from '../../../layouts/Layout.astro'
+import { formatArticleDate } from '../../../lib/articles'
+import {
+  chapterUrl,
+  formatChapterCount,
+  formatMinutes,
+  getCourseChapters,
+  getTotalReadingMinutes
+} from '../../../lib/courses'
+
+export async function getStaticPaths() {
+  const courses = await getCollection('courses')
+
+  return courses.map((course) => ({
+    params: { course: course.id },
+    props: { course }
+  }))
+}
+
+interface Props {
+  course: CollectionEntry<'courses'>
+}
+
+const { course } = Astro.props
+const { title, description, publishedAt, updatedAt, tags, sourceUrl } = course.data
+const chapters = await getCourseChapters(course.id)
+const firstChapter = chapters[0]
+const { Content } = await render(course)
+---
+
+<Layout title={`${title} | Wilfried Musanzi`} description={description}>
+  <article class="page-shell py-12 md:py-20">
+    <BackLink href="/cours" label="Tous les cours" />
+
+    <header class="mt-10 max-w-4xl border-b border-neutral-800 pb-12 md:mt-14 md:pb-16">
+      <h1
+        class="text-4xl leading-[1.05] font-bold tracking-[-0.03em] text-balance break-words text-neutral-50 md:text-6xl lg:text-7xl">
+        {title}
+      </h1>
+      <p class="mt-6 max-w-3xl text-lg leading-relaxed text-pretty text-neutral-400 md:text-xl">{description}</p>
+      <p class="mt-8 flex flex-wrap items-center gap-x-2 gap-y-1 font-code text-sm text-neutral-400">
+        <span>{formatChapterCount(chapters.length)}</span>
+        <span aria-hidden="true">·</span>
+        <span>{formatMinutes(getTotalReadingMinutes(chapters))}</span>
+        <span aria-hidden="true">·</span>
+        <span>Publié le <time datetime={publishedAt.toISOString()}>{formatArticleDate(publishedAt)}</time></span>
+        {
+          updatedAt && (
+            <>
+              <span aria-hidden="true">·</span>
+              <span>
+                mis à jour le <time datetime={updatedAt.toISOString()}>{formatArticleDate(updatedAt)}</time>
+              </span>
+            </>
+          )
+        }
+      </p>
+      <div class="mt-5">
+        <TagList tags={tags} />
+      </div>
+      <div class="mt-10 flex flex-wrap gap-3">
+        {
+          firstChapter && (
+            <a class="button-primary" href={chapterUrl(firstChapter)}>
+              Commencer le cours
+              <Icon class="size-4" name="arrow-right" />
+            </a>
+          )
+        }
+        {
+          sourceUrl && (
+            <a class="button-secondary" href={sourceUrl} target="_blank" rel="noreferrer">
+              <Icon class="size-4" name="github" />
+              Voir les skills sur GitHub
+            </a>
+          )
+        }
+      </div>
+    </header>
+
+    <div class="article-prose mt-12 max-w-3xl break-words md:mt-16">
+      <Content />
+    </div>
+
+    <section class="mt-20 max-w-4xl md:mt-28" aria-labelledby="sommaire">
+      <h2 id="sommaire" class="text-3xl leading-[1.05] font-bold tracking-[-0.03em] text-neutral-50 md:text-4xl">
+        Sommaire
+      </h2>
+      <div class="mt-8">
+        <ChapterIndex chapters={chapters} />
+      </div>
+    </section>
+
+    <p class="mt-12 text-sm text-neutral-400">
+      Ce cours est publié sous{' '}
+      <a class="text-link" href="https://creativecommons.org/licenses/by/4.0/deed.fr" rel="license noreferrer" target="_blank">
+        licence CC&nbsp;BY&nbsp;4.0</a
+      >.
+    </p>
+  </article>
+</Layout>

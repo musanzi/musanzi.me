@@ -2,6 +2,7 @@
 
 @theme {
   --font-googleSans: 'Google Sans', sans-serif;
+  --font-code: 'Google Sans Code', ui-monospace, monospace;
   --color-primary-50: #fff4f0;
   --color-primary-100: #ffe6dc;
   --color-primary-200: #ffc9b8;
@@ -16,78 +17,140 @@
   --color-surface: #181715;
 }
 
+@utility page-shell {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 80rem;
+  padding-inline: 1.5rem;
+
+  @media (width >= 48rem) {
+    padding-inline: 2.5rem;
+  }
+}
+
+@utility button-primary {
+  @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-primary-600 px-5 text-base font-semibold text-neutral-950 transition-colors duration-200 hover:bg-primary-400 active:bg-primary-700;
+}
+
+@utility button-secondary {
+  @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-lg border border-neutral-700 px-5 text-base font-medium text-neutral-200 transition-colors duration-200 hover:border-neutral-500 hover:bg-neutral-800/60 hover:text-neutral-50;
+}
+
+@utility text-link {
+  @apply font-medium text-neutral-100 underline decoration-primary-600 decoration-1 underline-offset-4 transition-colors hover:text-primary-300 hover:decoration-primary-300;
+}
+
 @layer base {
   :root {
     color-scheme: dark;
     scroll-behavior: smooth;
+    scrollbar-color: var(--color-neutral-700) var(--color-surface);
+    accent-color: var(--color-primary-500);
+    caret-color: var(--color-primary-400);
   }
 
   body {
-    @apply bg-surface font-googleSans;
+    @apply bg-surface font-googleSans text-neutral-300 antialiased;
   }
 
   ::selection {
     background: var(--color-primary-600);
     color: var(--color-surface);
   }
+
+  :focus-visible {
+    outline: 2px solid var(--color-primary-400);
+    outline-offset: 3px;
+    border-radius: 0.375rem;
+  }
+}
+
+@keyframes portrait-reveal {
+  from {
+    transform: scale(1.05);
+  }
+}
+
+.portrait-reveal {
+  animation: portrait-reveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
   :root {
     scroll-behavior: auto;
   }
+
+  .portrait-reveal {
+    animation: none;
+  }
 }
 
 @layer components {
-  .blog-prose {
-    @apply text-base leading-7 text-neutral-300 md:text-lg;
+  .article-prose {
+    @apply text-base leading-7 text-neutral-300 md:text-lg md:leading-8;
   }
 
-  .blog-prose h2 {
-    @apply mt-12 mb-4 text-2xl leading-7 font-bold tracking-tight text-neutral-50 md:text-3xl;
+  .article-prose h2 {
+    @apply mt-14 mb-4 text-2xl leading-tight font-bold tracking-[-0.02em] text-balance text-neutral-50 md:text-3xl;
   }
 
-  .blog-prose h3 {
-    @apply mt-9 mb-3 text-xl leading-tight font-semibold text-neutral-100 md:text-2xl;
+  .article-prose h3 {
+    @apply mt-10 mb-3 text-xl leading-tight font-semibold text-neutral-100 md:text-2xl;
   }
 
-  .blog-prose p,
-  .blog-prose ul,
-  .blog-prose ol,
-  .blog-prose pre,
-  .blog-prose blockquote {
+  .article-prose p,
+  .article-prose ul,
+  .article-prose ol,
+  .article-prose pre,
+  .article-prose blockquote {
     @apply my-5;
   }
 
-  .blog-prose ul {
-    @apply list-disc space-y-2 pl-6;
+  .article-prose ul {
+    @apply list-disc space-y-2 pl-6 marker:text-primary-500;
   }
 
-  .blog-prose ol {
-    @apply list-decimal space-y-2 pl-6;
+  .article-prose ol {
+    @apply list-decimal space-y-2 pl-6 marker:text-primary-500;
   }
 
-  .blog-prose a {
-    @apply font-medium text-primary-400 underline decoration-primary-700 underline-offset-4 transition hover:text-primary-300;
+  .article-prose a {
+    @apply text-link;
   }
 
-  .blog-prose strong {
+  .article-prose strong {
     @apply font-semibold text-neutral-100;
   }
 
-  .blog-prose blockquote {
-    @apply border-l-2 border-primary-600 pl-5 text-neutral-400 italic;
+  .article-prose blockquote {
+    @apply border-l border-primary-600 pl-5 text-neutral-400 italic;
   }
 
-  .blog-prose :not(pre) > code {
-    @apply rounded bg-neutral-800 px-1.5 py-0.5 font-mono text-[0.9em] text-primary-300;
+  .article-prose :not(pre) > code {
+    @apply rounded bg-neutral-800 px-1.5 py-0.5 font-code text-[0.9em] text-primary-300;
   }
 
-  .blog-prose pre {
-    @apply overflow-x-auto rounded-xl border border-neutral-700 p-5 text-sm leading-6 shadow-lg shadow-black/10;
+  .article-prose pre {
+    @apply overflow-x-auto rounded-xl border border-neutral-800 p-5 font-code text-sm leading-6;
   }
 
-  .blog-prose hr {
-    @apply my-10 border-neutral-800;
+  .article-prose table {
+    @apply my-8 block w-full max-w-full overflow-x-auto border-collapse text-left text-sm leading-6 md:text-base;
+  }
+
+  .article-prose thead {
+    @apply border-b border-neutral-700;
+  }
+
+  .article-prose th {
+    @apply px-3 py-2.5 align-bottom font-semibold whitespace-nowrap text-neutral-100 first:pl-0;
+  }
+
+  .article-prose td {
+    @apply min-w-40 border-b border-neutral-800 px-3 py-3 align-top text-neutral-300 first:min-w-0 first:pl-0;
+  }
+
+  .article-prose hr {
+    @apply my-12 border-neutral-800;
   }
 }

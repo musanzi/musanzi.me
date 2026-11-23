@@ -1,0 +1,17 @@
+---
+import Icon from '../shared/Icon.astro'
+
+interface Props {
+  href: string
+  label: string
+}
+
+const { href, label } = Astro.props
+---
+
+<a
+  class="group inline-flex min-h-10 items-center gap-2 text-sm font-medium text-neutral-400 transition-colors hover:text-primary-300"
+  href={href}>
+  <Icon class="size-4 transition-transform duration-200 group-hover:-translate-x-0.5" name="arrow-left" />
+  {label}
+</a>

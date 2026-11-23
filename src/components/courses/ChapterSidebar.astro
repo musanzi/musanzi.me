@@ -1,0 +1,48 @@
+---
+import ChapterNavList from './ChapterNavList.astro'
+import { courseUrl, type Chapter, type Course } from '../../lib/courses'
+
+interface Props {
+  course: Course
+  chapters: Chapter[]
+  currentId: string
+}
+
+const { course, chapters, currentId } = Astro.props
+---
+
+<details class="group/sommaire border-y border-neutral-800 lg:hidden">
+  <summary
+    class="flex min-h-12 cursor-pointer list-none items-center justify-between gap-4 py-3 text-sm font-medium text-neutral-200 [&::-webkit-details-marker]:hidden">
+    <span>Sommaire du cours <span class="font-code text-neutral-400">({chapters.length} chapitres)</span></span>
+    <svg
+      class="size-4 shrink-0 text-neutral-400 transition-transform group-open/sommaire:rotate-180"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true">
+      <path d="m6 9 6 6 6-6"></path>
+    </svg>
+  </summary>
+  <nav class="pt-2 pb-6" aria-label="Chapitres du cours">
+    <a class="mb-4 inline-flex min-h-10 items-center text-sm font-semibold text-neutral-100 hover:text-primary-300" href={courseUrl(course.id)}>
+      {course.data.title}
+    </a>
+    <ChapterNavList chapters={chapters} currentId={currentId} />
+  </nav>
+</details>
+
+<aside class="hidden lg:sticky lg:top-8 lg:block lg:self-start">
+  <nav aria-label="Chapitres du cours">
+    <a
+      class="mb-6 inline-flex min-h-10 items-center text-base leading-snug font-semibold text-balance text-neutral-50 transition-colors hover:text-primary-300"
+      href={courseUrl(course.id)}>
+      {course.data.title}
+    </a>
+    <ChapterNavList chapters={chapters} currentId={currentId} />
+  </nav>
+</aside>

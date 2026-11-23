@@ -1,0 +1,80 @@
+---
+import { Image } from 'astro:assets'
+import portrait from '../assets/wilfried.jpeg'
+import Icon from '../components/shared/Icon.astro'
+
+const links = [
+  { label: 'À propos', href: '/#a-propos' },
+  { label: 'Articles', href: '/articles' },
+  { label: 'Cours', href: '/cours' },
+  { label: 'Contact', href: '/#contact' }
+]
+
+function currentPage(href: string) {
+  return href.startsWith('/#') || !Astro.url.pathname.startsWith(href) ? undefined : 'page'
+}
+---
+
+<header class="border-b border-neutral-800">
+  <div class="page-shell flex h-16 items-center gap-8">
+    <a class="flex shrink-0 items-center gap-3" href="/">
+      <Image
+        class="size-9 rounded-full object-cover object-[50%_18%] ring-1 ring-neutral-700"
+        src={portrait}
+        width={72}
+        alt=""
+        loading="eager" />
+      <span class="hidden font-semibold text-neutral-50 min-[400px]:inline">Wilfried Musanzi</span>
+    </a>
+
+    <nav class="hidden md:block" aria-label="Navigation principale">
+      <ul class="flex items-center gap-1">
+        {
+          links.map((link) => (
+            <li>
+              <a
+                class="rounded-md px-3 py-2 text-sm text-neutral-400 transition-colors hover:bg-neutral-800/70 hover:text-neutral-50 aria-[current=page]:bg-neutral-800 aria-[current=page]:text-neutral-50"
+                href={link.href}
+                aria-current={currentPage(link.href)}>
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="ml-auto flex items-center gap-2">
+      <a
+        class="grid size-10 place-items-center rounded-md text-neutral-400 transition-colors hover:bg-neutral-800/70 hover:text-neutral-50"
+        href="https://github.com/musanzi"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="GitHub de Wilfried Musanzi">
+        <Icon class="size-5" name="github" />
+      </a>
+      <a
+        class="inline-flex min-h-10 items-center rounded-lg bg-primary-600 px-3.5 text-sm font-semibold whitespace-nowrap text-neutral-950 transition-colors hover:bg-primary-400"
+        href="/#contact">
+        Me contacter
+      </a>
+    </div>
+  </div>
+
+  <nav class="border-t border-neutral-800 md:hidden" aria-label="Navigation principale mobile">
+    <ul class="page-shell flex items-center gap-1 py-1.5">
+      {
+        links.map((link) => (
+          <li>
+            <a
+              class="inline-flex min-h-10 items-center rounded-md px-3 text-sm text-neutral-400 transition-colors hover:text-neutral-50 aria-[current=page]:text-neutral-50"
+              href={link.href}
+              aria-current={currentPage(link.href)}>
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>

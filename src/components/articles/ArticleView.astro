@@ -1,5 +1,6 @@
 ---
 import { render } from 'astro:content'
+import Icon from '../shared/Icon.astro'
 import { formatArticleDate, getReadingTime, type Article } from '../../lib/articles'
 
 interface Props {
@@ -8,40 +9,67 @@ interface Props {
 
 const { post } = Astro.props
 const { Content } = await render(post)
+const sourceUrl = `https://github.com/musanzi/musanzi.me/blob/main/src/content/articles/${post.id}.md`
 ---
 
-<article class="pt-8 text-neutral-300 md:pt-12">
-  <a class="inline-flex items-center gap-2 text-sm font-medium text-neutral-400 transition hover:text-primary-400 focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:outline-none" href="/articles">
-    <span aria-hidden="true">&larr;</span>
-    Tous les articles
-  </a>
-
-  <header class="mt-10 border-b border-neutral-800 pb-9 md:pb-12">
-    <time class="text-primary-500" datetime={post.data.publishedAt.toISOString()}>{formatArticleDate(post.data.publishedAt)}</time>
-    <h1 class="mt-2 max-w-4xl text-4xl leading-tight font-bold tracking-tight text-neutral-50 md:text-6xl">{post.data.title}</h1>
-    <p class="mt-6 max-w-3xl text-lg leading-7 text-neutral-400 md:text-xl">{post.data.description}</p>
-    <div class="mt-6 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-neutral-500">
-      <span>{post.data.author}</span>
-      <span aria-hidden="true">&middot;</span>
-      <span>{getReadingTime(post.body)}</span>
-    </div>
-    <ul class="mt-4 flex flex-wrap gap-2" aria-label="Thèmes">
-      {post.data.tags.map((tag) => <li class="rounded-full border border-neutral-700 px-2.5 py-1 text-xs font-medium text-neutral-400">{tag}</li>)}
-    </ul>
-  </header>
-
-  <div class="blog-prose mx-auto mt-10 md:mt-14">
-    <Content />
-  </div>
-
-  <footer class="mt-14 flex gap-4 border-t border-neutral-800 pt-8 items-center justify-between">
-    <a class="inline-flex items-center gap-2 text-sm font-semibold text-neutral-300 transition hover:text-primary-400 focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:outline-none" href="/articles">
-      <span aria-hidden="true">&larr;</span>
+<article class="page-shell py-16 md:py-24">
+  <div class="mx-auto max-w-3xl">
+    <a
+      class="group inline-flex items-center gap-2 text-sm font-medium text-neutral-400 transition-colors hover:text-primary-300"
+      href="/articles">
+      <Icon class="size-4 transition-transform duration-200 group-hover:-translate-x-0.5" name="arrow-left" />
       Tous les articles
     </a>
-    <a class="inline-flex items-center gap-2 text-sm font-semibold text-primary-400 transition hover:text-primary-300 focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:outline-none" href="/#contact">
-      Travaillons ensemble
-      <span aria-hidden="true">&rarr;</span>
-    </a>
-  </footer>
+
+    <header class="mt-10 border-b border-neutral-800 pb-10 md:pb-12">
+      <p class="flex flex-wrap items-center gap-x-3 gap-y-1 font-code text-sm text-primary-400">
+        <time datetime={post.data.publishedAt.toISOString()}>{formatArticleDate(post.data.publishedAt)}</time>
+        <span class="size-1 rounded-full bg-primary-600" aria-hidden="true"></span>
+        <span>{getReadingTime(post.body)}</span>
+      </p>
+      <h1
+        class="mt-5 text-4xl leading-[1.05] font-bold tracking-[-0.03em] text-balance text-neutral-50 md:text-6xl">
+        {post.data.title}
+      </h1>
+      <p class="mt-6 text-lg leading-relaxed text-neutral-400 md:text-xl">{post.data.description}</p>
+      <p class="mt-6 text-sm text-neutral-400">Par <span class="text-neutral-200">{post.data.author}</span></p>
+      {
+        post.data.tags.length > 0 && (
+          <ul class="mt-5 flex flex-wrap gap-2" aria-label="Thèmes">
+            {post.data.tags.map((tag) => (
+              <li class="rounded-full border border-neutral-700 px-3 py-1 font-code text-xs text-neutral-400">{tag}</li>
+            ))}
+          </ul>
+        )
+      }
+    </header>
+
+    <div class="article-prose mt-10 md:mt-14">
+      <Content />
+    </div>
+
+    <footer
+      class="mt-16 flex flex-col gap-4 border-t border-neutral-800 pt-8 text-sm font-medium sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
+      <a
+        class="group inline-flex items-center gap-2 text-neutral-300 transition-colors hover:text-primary-300"
+        href="/articles">
+        <Icon class="size-4 transition-transform duration-200 group-hover:-translate-x-0.5" name="arrow-left" />
+        Tous les articles
+      </a>
+      <a
+        class="inline-flex items-center gap-2 text-neutral-300 transition-colors hover:text-primary-300"
+        href={sourceUrl}
+        target="_blank"
+        rel="noreferrer">
+        <Icon class="size-4" name="github" />
+        Voir la source sur GitHub
+      </a>
+      <a
+        class="group inline-flex items-center gap-2 text-primary-400 transition-colors hover:text-primary-300"
+        href="/#contact">
+        Travaillons ensemble
+        <Icon class="size-4 transition-transform duration-200 group-hover:translate-x-0.5" name="arrow-right" />
+      </a>
+    </footer>
+  </div>
 </article>

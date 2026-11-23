@@ -11,7 +11,7 @@ export function formatArticleDate(date: Date) {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
-    timeZone: 'UTC',
+    timeZone: 'UTC'
   }).format(date)
 }
 

@@ -1,7 +1,7 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
 
-type IconName = 'arrow-right' | 'arrow-up-right' | 'circle-check' | 'file-text' | 'folder-code' | 'github' | 'linkedin' | 'list-checks' | 'mail' | 'send' | 'user-round'
+type IconName = 'arrow-left' | 'arrow-right' | 'book-open' | 'github' | 'linkedin' | 'mail'
 
 interface Props extends HTMLAttributes<'svg'> {
   name: IconName
@@ -26,23 +26,16 @@ const { name, ...attributes } = Astro.props
       <path d="m13 6 6 6-6 6" />
     </>
   )}
-  {name === 'arrow-up-right' && <path d="M7 17 17 7M7 7h10v10" />}
-  {name === 'circle-check' && (
+  {name === 'arrow-left' && (
     <>
-      <circle cx="12" cy="12" r="9" />
-      <path d="m8.5 12 2.25 2.25L15.5 9.5" />
+      <path d="M19 12H5" />
+      <path d="m11 18-6-6 6-6" />
     </>
   )}
-  {name === 'file-text' && (
+  {name === 'book-open' && (
     <>
-      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z" />
-      <path d="M14 2v6h6M8 13h8M8 17h6" />
-    </>
-  )}
-  {name === 'folder-code' && (
-    <>
-      <path d="M10 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8Z" />
-      <path d="M8 12h8M8 16h5" />
+      <path d="M12 7v14" />
+      <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z" />
     </>
   )}
   {name === 'github' && (
@@ -55,28 +48,10 @@ const { name, ...attributes } = Astro.props
       <circle cx="4" cy="4" r="2" />
     </>
   )}
-  {name === 'list-checks' && (
-    <>
-      <path d="m3 7 2 2 4-4M3 17l2 2 4-4" />
-      <path d="M13 6h8M13 12h8M13 18h8" />
-    </>
-  )}
   {name === 'mail' && (
     <>
       <rect width="20" height="16" x="2" y="4" rx="2" />
       <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-    </>
-  )}
-  {name === 'send' && (
-    <>
-      <path d="m22 2-7 20-4-9-9-4Z" />
-      <path d="M22 2 11 13" />
-    </>
-  )}
-  {name === 'user-round' && (
-    <>
-      <circle cx="12" cy="8" r="5" />
-      <path d="M20 21a8 8 0 0 0-16 0" />
     </>
   )}
 </svg>

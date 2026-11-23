@@ -1,0 +1,30 @@
+---
+import { chapterUrl, formatChapterNumber, formatMinutes, getReadingMinutes, type Chapter } from '../../lib/courses'
+
+interface Props {
+  chapters: Chapter[]
+}
+
+const { chapters } = Astro.props
+---
+
+<ol class="border-t border-neutral-800">
+  {
+    chapters.map((chapter, index) => (
+      <li class="border-b border-neutral-800">
+        <a class="group grid grid-cols-[2.5rem_1fr] gap-x-4 py-6 md:grid-cols-[3rem_1fr_auto] md:gap-x-6" href={chapterUrl(chapter)}>
+          <span class="pt-0.5 font-code text-base text-primary-400 md:text-lg">{formatChapterNumber(index + 1)}</span>
+          <span class="min-w-0">
+            <span class="block text-lg leading-snug font-semibold text-balance break-words text-neutral-50 transition-colors group-hover:text-primary-300 md:text-xl">
+              {chapter.data.title}
+            </span>
+            <span class="mt-2 block leading-relaxed text-pretty text-neutral-400">{chapter.data.description}</span>
+          </span>
+          <span class="col-start-2 mt-3 font-code text-sm text-neutral-400 md:col-start-3 md:mt-1">
+            {formatMinutes(getReadingMinutes(chapter.body))}
+          </span>
+        </a>
+      </li>
+    ))
+  }
+</ol>

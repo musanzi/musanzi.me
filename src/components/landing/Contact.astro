@@ -2,47 +2,45 @@
 import Icon from '../shared/Icon.astro'
 ---
 
-<section id="contact" class="scroll-mt-8">
-  <div class="mb-3 flex items-center gap-2.5">
-    <p class="inline-flex items-center gap-1.5 text-sm leading-4 font-semibold tracking-wide whitespace-nowrap text-neutral-400">
-      <Icon class="size-4 " name="send" />
-      Contact
+<section id="contact" class="scroll-mt-20" aria-labelledby="contact-title">
+  <div class="page-shell py-20 md:py-28">
+    <h2
+      id="contact-title"
+      class="max-w-[18ch] text-4xl leading-[1.05] font-bold tracking-[-0.03em] text-balance text-neutral-50 md:text-6xl">
+      Besoin d'un développeur ou d'un partenaire pour livrer votre produit ?
+    </h2>
+    <p class="mt-8 max-w-[70ch] text-lg leading-relaxed text-neutral-400">
+      Je suis disponible pour des postes à temps plein, des contrats à durée déterminée et des missions freelance. Si
+      vous cherchez un développeur fullstack ou voulez mener une application web du besoin jusqu'à la production,
+      dites-moi ce que vous construisez, ce qui bloque ou là où votre équipe a besoin de renfort. Nous pouvons en parler
+      en français ou en anglais.
     </p>
-    <div class="h-px w-full bg-neutral-700"></div>
-  </div>
-  <h2 class="mb-6 text-2xl leading-tight font-bold text-neutral-50">
-    Need an engineer or a product delivery partner?
-  </h2>
-  <p class="max-w-2xl text-neutral-400">
-    I'm available for full-time roles, fixed-term contracts, and freelance projects. If you need a Fullstack engineer
-    or a practical web product taken from requirements to production, tell me what you are building, what is not
-    working, or where your team needs support. We can discuss it in English or French.
-  </p>
-  <div class="mt-5 flex flex-wrap items-center gap-3">
-    <a
-      class="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-neutral-700 bg-neutral-900 px-4 py-2 text-base font-medium text-neutral-300 transition hover:border-primary-600 hover:bg-neutral-800 hover:text-neutral-50 focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 focus-visible:ring-offset-surface focus-visible:outline-none"
-      href="mailto:musanziw.m@gmail.com"
-      aria-label="Email Wilfried Musanzi at musanziw.m@gmail.com">
-      E-mail me
-      <Icon class="size-4" name="mail" />
-    </a>
-    <a
-      class="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-neutral-700 bg-neutral-900 px-4 py-2 text-base font-medium text-neutral-300 transition hover:border-primary-600 hover:bg-neutral-800 hover:text-neutral-50 focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 focus-visible:ring-offset-surface focus-visible:outline-none"
-      href="https://github.com/musanzi"
-      target="_blank"
-      rel="noreferrer"
-      aria-label="View Wilfried Musanzi on GitHub">
-      GitHub
-      <Icon class="size-4" name="github" />
-    </a>
-    <a
-      class="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-neutral-700 bg-neutral-900 px-4 py-2 text-base font-medium text-neutral-300 transition hover:border-primary-600 hover:bg-neutral-800 hover:text-neutral-50 focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 focus-visible:ring-offset-surface focus-visible:outline-none"
-      href="https://www.linkedin.com/in/wilfried-musanzi-197381205"
-      target="_blank"
-      rel="noreferrer"
-      aria-label="View Wilfried Musanzi on LinkedIn">
-      LinkedIn
-      <Icon class="size-4" name="linkedin" />
-    </a>
+    <div class="mt-10 flex flex-wrap items-center gap-3">
+      <a
+        class="button-primary"
+        href="mailto:musanziw.m@gmail.com"
+        aria-label="M'écrire par e-mail à musanziw.m@gmail.com">
+        <Icon class="size-5" name="mail" />
+        M'écrire
+      </a>
+      <a
+        class="button-secondary"
+        href="https://github.com/musanzi"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="GitHub de Wilfried Musanzi, nouvel onglet">
+        <Icon class="size-5" name="github" />
+        GitHub
+      </a>
+      <a
+        class="button-secondary"
+        href="https://www.linkedin.com/in/wilfried-musanzi-197381205"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="LinkedIn de Wilfried Musanzi, nouvel onglet">
+        <Icon class="size-5" name="linkedin" />
+        LinkedIn
+      </a>
+    </div>
   </div>
 </section>

@@ -1,0 +1,86 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content'
+import ChapterPager from '../../../components/courses/ChapterPager.astro'
+import ChapterSidebar from '../../../components/courses/ChapterSidebar.astro'
+import Icon from '../../../components/shared/Icon.astro'
+import Layout from '../../../layouts/Layout.astro'
+import { chapterSlug, formatChapterNumber, getReadingMinutes, sortChapters } from '../../../lib/courses'
+
+export async function getStaticPaths() {
+  const chapters = await getCollection('chapters')
+  const courses = await getCollection('courses')
+
+  return courses.flatMap((course) => {
+    const courseChapters = sortChapters(chapters.filter((chapter) => chapter.data.course.id === course.id))
+
+    return courseChapters.map((chapter, index) => ({
+      params: { course: course.id, chapter: chapterSlug(chapter) },
+      props: {
+        course,
+        chapter,
+        chapters: courseChapters,
+        position: index + 1,
+        previous: courseChapters[index - 1],
+        next: courseChapters[index + 1]
+      }
+    }))
+  })
+}
+
+interface Props {
+  course: CollectionEntry<'courses'>
+  chapter: CollectionEntry<'chapters'>
+  chapters: CollectionEntry<'chapters'>[]
+  position: number
+  previous?: CollectionEntry<'chapters'>
+  next?: CollectionEntry<'chapters'>
+}
+
+const { course, chapter, chapters, position, previous, next } = Astro.props
+const { Content } = await render(chapter)
+const sourceUrl = `https://github.com/musanzi/musanzi.me/blob/main/src/content/chapters/${chapter.id}.md`
+---
+
+<Layout
+  title={`${chapter.data.title} · ${course.data.title} | Wilfried Musanzi`}
+  description={chapter.data.description}
+  ogType="article"
+  publishedTime={course.data.publishedAt.toISOString()}>
+  <div class="page-shell py-10 md:py-16 lg:grid lg:grid-cols-[17rem_minmax(0,1fr)] lg:gap-16 xl:gap-24">
+    <ChapterSidebar course={course} chapters={chapters} currentId={chapter.id} />
+
+    <article class="mt-10 max-w-3xl min-w-0 lg:mt-0">
+      <header class="border-b border-neutral-800 pb-10">
+        <p class="font-code text-sm text-neutral-400">
+          Chapitre {formatChapterNumber(position)} sur {formatChapterNumber(chapters.length)} · {
+            getReadingMinutes(chapter.body)
+          }&nbsp;min de lecture
+        </p>
+        <h1
+          class="mt-4 text-4xl leading-[1.05] font-bold tracking-[-0.03em] text-balance break-words text-neutral-50 md:text-5xl">
+          {chapter.data.title}
+        </h1>
+        <p class="mt-6 text-lg leading-relaxed text-pretty text-neutral-400 md:text-xl">{chapter.data.description}</p>
+      </header>
+
+      <div class="article-prose mt-10 break-words md:mt-12">
+        <Content />
+      </div>
+
+      <div class="mt-16 border-t border-neutral-800 pt-10">
+        <ChapterPager courseId={course.id} previous={previous} next={next} />
+      </div>
+
+      <p class="mt-8">
+        <a
+          class="inline-flex min-h-10 items-center gap-2 text-sm text-neutral-400 transition-colors hover:text-primary-300"
+          href={sourceUrl}
+          target="_blank"
+          rel="noreferrer">
+          <Icon class="size-4" name="github" />
+          Voir la source sur GitHub
+        </a>
+      </p>
+    </article>
+  </div>
+</Layout>

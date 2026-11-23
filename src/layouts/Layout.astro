@@ -3,6 +3,7 @@ import { ClientRouter } from "astro:transitions";
 import profileImage from "../assets/wilfried.jpeg";
 import "../styles/global.css";
 import Footer from "./Footer.astro";
+import Header from "./Header.astro";
 
 interface Props {
   title?: string;
@@ -72,14 +73,20 @@ const structuredData = {
     <meta name="twitter:image:alt" content="Wilfried Musanzi" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Google+Sans+Code:wght@400..600&display=swap" rel="stylesheet">
     <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
     <ClientRouter />
   </head>
-  <body class="mx-auto flex min-h-dvh w-[calc(100%-3rem)] max-w-4xl flex-col py-6">
-    <div class="flex-1">
+  <body class="flex min-h-dvh flex-col">
+    <a
+      class="sr-only rounded-lg bg-primary-600 px-4 py-3 text-sm font-semibold text-neutral-950 focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50"
+      href="#contenu">
+      Aller au contenu
+    </a>
+    <Header />
+    <main id="contenu" class="flex-1">
       <slot />
-    </div>
+    </main>
     <Footer />
   </body>
 </html>

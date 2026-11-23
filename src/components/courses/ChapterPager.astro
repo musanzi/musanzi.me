@@ -1,0 +1,51 @@
+---
+import Icon from '../shared/Icon.astro'
+import { chapterUrl, courseUrl, type Chapter } from '../../lib/courses'
+
+interface Props {
+  courseId: string
+  previous?: Chapter
+  next?: Chapter
+}
+
+const { courseId, previous, next } = Astro.props
+const linkClass =
+  'group flex min-h-20 flex-col justify-center gap-1 rounded-lg border border-neutral-800 px-5 py-4 transition-colors hover:border-neutral-600 hover:bg-neutral-800/40'
+---
+
+<nav class="grid gap-4 md:grid-cols-2" aria-label="Navigation entre les chapitres">
+  {
+    previous && (
+      <a class={linkClass} href={chapterUrl(previous)} rel="prev">
+        <span class="flex items-center gap-2 text-sm text-neutral-400">
+          <Icon class="size-4 transition-transform group-hover:-translate-x-0.5" name="arrow-left" />
+          Chapitre précédent
+        </span>
+        <span class="font-semibold text-balance break-words text-neutral-100 group-hover:text-primary-300">
+          {previous.data.title}
+        </span>
+      </a>
+    )
+  }
+  {
+    next ? (
+      <a class:list={[linkClass, 'text-right md:col-start-2']} href={chapterUrl(next)} rel="next">
+        <span class="flex items-center justify-end gap-2 text-sm text-neutral-400">
+          Chapitre suivant
+          <Icon class="size-4 transition-transform group-hover:translate-x-0.5" name="arrow-right" />
+        </span>
+        <span class="font-semibold text-balance break-words text-neutral-100 group-hover:text-primary-300">
+          {next.data.title}
+        </span>
+      </a>
+    ) : (
+      <a class:list={[linkClass, 'text-right md:col-start-2']} href={courseUrl(courseId)}>
+        <span class="flex items-center justify-end gap-2 text-sm text-neutral-400">
+          Fin du cours
+          <Icon class="size-4 transition-transform group-hover:translate-x-0.5" name="book-open" />
+        </span>
+        <span class="font-semibold text-neutral-100 group-hover:text-primary-300">Retour au sommaire</span>
+      </a>
+    )
+  }
+</nav>
