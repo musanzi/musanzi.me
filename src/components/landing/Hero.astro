@@ -11,7 +11,7 @@ const stats = [
 ---
 
 <section class="relative overflow-hidden border-b border-neutral-800" aria-labelledby="hero-title">
-  <div class="page-shell relative z-10 flex flex-col justify-center pt-10 pb-10 md:pt-14 md:pb-12 lg:min-h-[min(calc(100svh-4rem),42rem)] lg:py-14">
+  <div class="page-shell relative z-10 flex min-h-[calc(100svh-4rem)] flex-col justify-end pt-[38svh] pb-10 md:pb-12 lg:min-h-[min(calc(100svh-4rem),42rem)] lg:py-14">
     <div class="lg:w-[54%] lg:pr-8">
       <h1
         id="hero-title"
@@ -49,19 +49,18 @@ const stats = [
     </div>
   </div>
 
-  <div class="relative overflow-hidden lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+  <div class="absolute inset-0 overflow-hidden lg:inset-y-0 lg:right-0 lg:left-auto lg:w-1/2">
     <Image
-      class="portrait-reveal aspect-[4/5] max-h-[36rem] w-full object-cover object-[50%_20%] lg:aspect-auto lg:h-full lg:max-h-none"
+      class="portrait-reveal h-full w-full object-cover object-[60%_10%] opacity-90 sm:object-[50%_10%] lg:object-[50%_20%] lg:opacity-100"
       src={portrait}
       widths={[480, 853]}
       sizes="(min-width: 64rem) 50vw, 100vw"
       loading="eager"
       fetchpriority="high"
       alt="Portrait de Wilfried Musanzi" />
-    <div class="pointer-events-none absolute inset-x-0 top-0 h-24 bg-linear-to-b from-surface to-transparent lg:hidden">
-    </div>
-    <div class="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-surface to-transparent lg:hidden">
-    </div>
+    <div class="pointer-events-none absolute inset-0 bg-linear-to-t from-surface from-40% via-surface/80 via-62% to-surface/0 lg:hidden"></div>
+    <div class="pointer-events-none absolute inset-x-0 top-0 h-24 bg-linear-to-b from-surface/80 to-transparent lg:hidden"></div>
+    <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_25%,transparent_35%,var(--color-surface)_95%)] lg:hidden"></div>
     <div
       class="pointer-events-none absolute inset-0 hidden bg-linear-to-r from-surface via-surface/30 to-transparent lg:block">
     </div>
