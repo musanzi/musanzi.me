@@ -74,7 +74,7 @@ const groups = [
       class="mt-10 grid gap-4 md:mt-12 md:grid-cols-2 lg:grid-cols-3">
       {
         groups.map((group, index) => (
-          <li class="flex flex-col rounded-2xl bg-card p-6 transition-colors duration-200 hover:bg-[#282622] md:p-7">
+          <li class="flex min-w-0 flex-col rounded-2xl bg-card p-6 transition-colors duration-200 hover:bg-[#282622] md:p-7">
             <h3 class="flex items-baseline gap-3 text-xl font-semibold tracking-[-0.01em] text-neutral-50">
               <span
                 class:list={['font-code text-sm', index === 0 ? 'text-primary-400' : 'text-neutral-500']}
