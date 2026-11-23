@@ -1,21 +1,16 @@
 ---
 const year = new Date().getFullYear()
-const repositoryUrl = 'https://github.com/musanzi/musanzi.me'
 ---
 
 <footer class="border-t border-neutral-800">
-  <div class="page-shell flex flex-col gap-3 py-8 text-sm text-neutral-500 md:flex-row md:items-center md:justify-between">
+  <div class="page-shell flex flex-col gap-3 py-8 text-sm text-neutral-500 sm:flex-row sm:items-center sm:justify-between">
     <p>&copy; {year} Wilfried Musanzi</p>
-    <p class="flex flex-wrap items-center gap-x-2.5 gap-y-1">
-      <span>
-        Contenus sous licence{' '}<a class="text-neutral-300 underline-offset-4 hover:text-primary-300 hover:underline" href="https://creativecommons.org/licenses/by/4.0/deed.fr" rel="license noreferrer" target="_blank">CC BY 4.0</a>
-      </span>
-      <span class="size-1 self-center rounded-full bg-neutral-600" aria-hidden="true"></span>
-      <span>
-        Code sous licence{' '}<a class="text-neutral-300 underline-offset-4 hover:text-primary-300 hover:underline" href={`${repositoryUrl}/blob/main/LICENSE`} rel="noreferrer" target="_blank">MIT</a>
-      </span>
-      <span class="size-1 self-center rounded-full bg-neutral-600" aria-hidden="true"></span>
-      <a class="text-neutral-300 underline-offset-4 hover:text-primary-300 hover:underline" href={repositoryUrl} rel="noreferrer" target="_blank">Code source</a>
-    </p>
+    <a
+      class="text-neutral-300 underline-offset-4 hover:text-primary-300 hover:underline"
+      href="https://github.com/musanzi/musanzi.me"
+      rel="noreferrer"
+      target="_blank">
+      Code source sur GitHub
+    </a>
   </div>
 </footer>

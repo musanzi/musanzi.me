@@ -1,6 +1,8 @@
 ---
 import { render } from 'astro:content'
 import Icon from '../shared/Icon.astro'
+import Thumbnail from '../shared/Thumbnail.astro'
+import ArticleToc from './ArticleToc.astro'
 import { formatArticleDate, getReadingTime, type Article } from '../../lib/articles'
 
 interface Props {
@@ -8,12 +10,13 @@ interface Props {
 }
 
 const { post } = Astro.props
-const { Content } = await render(post)
+const { Content, headings } = await render(post)
 const sourceUrl = `https://github.com/musanzi/musanzi.me/blob/main/src/content/articles/${post.id}.md`
 ---
 
-<article class="page-shell py-16 md:py-24">
-  <div class="mx-auto max-w-3xl">
+<div class="page-shell py-10 md:py-16 lg:grid lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-16 xl:gap-20">
+  <ArticleToc headings={headings} variant="aside" />
+  <article class="max-w-3xl min-w-0">
     <a
       class="group inline-flex items-center gap-2 text-sm font-medium text-neutral-400 transition-colors hover:text-primary-300"
       href="/articles">
@@ -44,12 +47,21 @@ const sourceUrl = `https://github.com/musanzi/musanzi.me/blob/main/src/content/a
       }
     </header>
 
-    <div class="article-prose mt-10 md:mt-14">
+    <Thumbnail
+      class="mt-8 md:mt-10"
+      title={post.data.cover?.title ?? post.data.title}
+      subtitle={post.data.cover?.subtitle}
+      sizes="(min-width: 48rem) 22rem, 46vw"
+      eager />
+
+    <ArticleToc headings={headings} variant="details" />
+
+    <div class="article-prose mt-8 md:mt-10">
       <Content />
     </div>
 
     <footer
-      class="mt-16 flex flex-col gap-4 border-t border-neutral-800 pt-8 text-sm font-medium sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
+      class="mt-12 flex flex-col gap-4 border-t border-neutral-800 pt-8 text-sm font-medium sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
       <a
         class="group inline-flex items-center gap-2 text-neutral-300 transition-colors hover:text-primary-300"
         href="/articles">
@@ -71,5 +83,5 @@ const sourceUrl = `https://github.com/musanzi/musanzi.me/blob/main/src/content/a
         <Icon class="size-4 transition-transform duration-200 group-hover:translate-x-0.5" name="arrow-right" />
       </a>
     </footer>
-  </div>
-</article>
+  </article>
+</div>

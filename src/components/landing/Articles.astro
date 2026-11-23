@@ -7,8 +7,8 @@ import { sortArticles } from '../../lib/articles'
 const articles = sortArticles(await getCollection('articles')).slice(0, 3)
 ---
 
-<section id="articles" class="scroll-mt-20 border-b border-neutral-800" aria-labelledby="articles-title">
-  <div class="page-shell py-20 md:py-28">
+<section id="articles" class="scroll-mt-32 md:scroll-mt-20 border-b border-neutral-800" aria-labelledby="articles-title">
+  <div class="page-shell py-14 md:py-20">
     <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
       <h2
         id="articles-title"
@@ -20,7 +20,7 @@ const articles = sortArticles(await getCollection('articles')).slice(0, 3)
         <Icon class="size-4 transition-transform duration-200 group-hover:translate-x-0.5" name="arrow-right" />
       </a>
     </div>
-    <ul class="mt-12 border-t border-neutral-800 md:mt-16">
+    <ul class="mt-8 border-t border-neutral-800 md:mt-10">
       {articles.map((article) => <ArticleRow post={article} headingLevel={3} />)}
     </ul>
   </div>

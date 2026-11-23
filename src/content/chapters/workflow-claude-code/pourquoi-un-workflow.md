@@ -89,7 +89,7 @@ Trois skills viennent d'autres projets :
 
 Le skill `pr` a aussi un fichier `CREDITS.md` : sa section de résumé visuel reprend le skill `show-me` de Dex Horthy (HumanLayer).
 
-Le dépôt [musanzi/skills](https://github.com/musanzi/skills) est sous licence MIT. Vous pouvez le cloner, le forker et l'adapter.
+Le dépôt [musanzi/skills](https://github.com/musanzi/skills) est open source. Vous pouvez le cloner, le forker et l'adapter.
 
 ## À retenir
 

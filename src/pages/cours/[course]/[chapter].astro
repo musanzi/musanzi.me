@@ -46,7 +46,7 @@ const sourceUrl = `https://github.com/musanzi/musanzi.me/blob/main/src/content/c
   description={chapter.data.description}
   ogType="article"
   publishedTime={course.data.publishedAt.toISOString()}>
-  <div class="page-shell py-10 md:py-16 lg:grid lg:grid-cols-[17rem_minmax(0,1fr)] lg:gap-16 xl:gap-24">
+  <div class="page-shell py-8 md:py-12 lg:grid lg:grid-cols-[17rem_minmax(0,1fr)] lg:gap-16 xl:gap-24">
     <ChapterSidebar course={course} chapters={chapters} currentId={chapter.id} />
 
     <article class="mt-10 max-w-3xl min-w-0 lg:mt-0">
@@ -67,7 +67,7 @@ const sourceUrl = `https://github.com/musanzi/musanzi.me/blob/main/src/content/c
         <Content />
       </div>
 
-      <div class="mt-16 border-t border-neutral-800 pt-10">
+      <div class="mt-12 border-t border-neutral-800 pt-8">
         <ChapterPager courseId={course.id} previous={previous} next={next} />
       </div>
 

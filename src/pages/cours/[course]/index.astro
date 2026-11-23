@@ -4,6 +4,7 @@ import BackLink from '../../../components/courses/BackLink.astro'
 import ChapterIndex from '../../../components/courses/ChapterIndex.astro'
 import TagList from '../../../components/courses/TagList.astro'
 import Icon from '../../../components/shared/Icon.astro'
+import Thumbnail from '../../../components/shared/Thumbnail.astro'
 import Layout from '../../../layouts/Layout.astro'
 import { formatArticleDate } from '../../../lib/articles'
 import {
@@ -28,19 +29,20 @@ interface Props {
 }
 
 const { course } = Astro.props
-const { title, description, publishedAt, updatedAt, tags, sourceUrl } = course.data
+const { title, description, publishedAt, updatedAt, tags, sourceUrl, cover } = course.data
 const chapters = await getCourseChapters(course.id)
 const firstChapter = chapters[0]
 const { Content } = await render(course)
 ---
 
 <Layout title={`${title} | Wilfried Musanzi`} description={description}>
-  <article class="page-shell py-12 md:py-20">
+  <article class="page-shell py-10 md:py-16">
     <BackLink href="/cours" label="Tous les cours" />
 
-    <header class="mt-10 max-w-4xl border-b border-neutral-800 pb-12 md:mt-14 md:pb-16">
+    <header class="mt-8 grid gap-10 border-b border-neutral-800 pb-10 md:mt-10 md:pb-12 lg:grid-cols-[minmax(0,1fr)_26rem] lg:items-center lg:gap-14">
+      <div>
       <h1
-        class="text-4xl leading-[1.05] font-bold tracking-[-0.03em] text-balance break-words text-neutral-50 md:text-6xl lg:text-7xl">
+        class="text-4xl leading-[1.05] font-bold tracking-[-0.03em] text-balance break-words text-neutral-50 md:text-6xl">
         {title}
       </h1>
       <p class="mt-6 max-w-3xl text-lg leading-relaxed text-pretty text-neutral-400 md:text-xl">{description}</p>
@@ -82,9 +84,11 @@ const { Content } = await render(course)
           )
         }
       </div>
+      </div>
+      <Thumbnail title={cover?.title ?? title} subtitle={cover?.subtitle} sizes="(min-width: 64rem) 12rem, 46vw" eager />
     </header>
 
-    <div class="article-prose mt-12 max-w-3xl break-words md:mt-16">
+    <div class="article-prose mt-10 max-w-3xl break-words md:mt-12">
       <Content />
     </div>
 
@@ -96,12 +100,5 @@ const { Content } = await render(course)
         <ChapterIndex chapters={chapters} />
       </div>
     </section>
-
-    <p class="mt-12 text-sm text-neutral-400">
-      Ce cours est publié sous{' '}
-      <a class="text-link" href="https://creativecommons.org/licenses/by/4.0/deed.fr" rel="license noreferrer" target="_blank">
-        licence CC&nbsp;BY&nbsp;4.0</a
-      >.
-    </p>
   </article>
 </Layout>

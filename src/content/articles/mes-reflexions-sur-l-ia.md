@@ -7,6 +7,9 @@ tags:
   - IA
   - Génie logiciel
   - Métier
+cover:
+  title: "Mes réflexions sur l'IA"
+  subtitle: 'Un outil qui accélère, pas un développeur à ma place'
 ---
 
 L'IA est un outil conçu par des humains, pour des humains. Elle peut me rendre plus rapide, mais elle ne remplace pas ma responsabilité de développeur.

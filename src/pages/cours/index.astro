@@ -15,18 +15,18 @@ const courses = await Promise.all(
 <Layout
   title="Cours | Wilfried Musanzi"
   description="Des cours gratuits et open source sur le développement web et les outils d'IA, tirés de la pratique quotidienne d'un développeur fullstack.">
-  <div class="page-shell py-16 md:py-24">
+  <div class="page-shell py-10 md:py-16">
     <header class="max-w-3xl">
       <h1 class="text-5xl leading-[1.05] font-bold tracking-[-0.03em] text-balance text-neutral-50 md:text-7xl">Cours</h1>
       <p class="mt-6 text-lg leading-relaxed text-pretty text-neutral-400 md:text-xl">
-        Des cours gratuits et open source, tirés de mon travail quotidien de développeur. Chaque cours est publié sous
-        licence CC&nbsp;BY&nbsp;4.0&nbsp;: vous pouvez le lire, le partager et l'adapter.
+        Des cours gratuits et open source, tirés de mon travail quotidien de développeur. Lisez-les, partagez-les
+        et adaptez-les librement.
       </p>
     </header>
 
     {
       courses.length > 0 ? (
-        <ul class="mt-14 border-t border-neutral-800 md:mt-20">
+        <ul class="mt-8 border-t border-neutral-800 md:mt-10">
           {courses.map((entry) => (
             <CourseRow course={entry.course} chapterCount={entry.chapterCount} totalMinutes={entry.totalMinutes} />
           ))}

@@ -14,13 +14,14 @@
   --color-primary-800: #c23d17;
   --color-primary-900: #9f3519;
   --color-primary-950: #561708;
+  --color-primary-action: #d4421a;
   --color-surface: #181715;
 }
 
 @utility page-shell {
   margin-inline: auto;
   width: 100%;
-  max-width: 80rem;
+  max-width: 72rem;
   padding-inline: 1.5rem;
 
   @media (width >= 48rem) {
@@ -29,7 +30,7 @@
 }
 
 @utility button-primary {
-  @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-primary-600 px-5 text-base font-semibold text-neutral-950 transition-colors duration-200 hover:bg-primary-400 active:bg-primary-700;
+  @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-primary-action px-5 text-base font-semibold text-white transition-colors duration-200 hover:bg-primary-800 active:bg-primary-900;
 }
 
 @utility button-secondary {

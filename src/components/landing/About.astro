@@ -1,44 +1,64 @@
 ---
 const externalLink = { target: '_blank', rel: 'noreferrer' }
+
+const achievements = [
+  {
+    name: 'Fikiri',
+    href: 'https://fikiri.co',
+    insight: 'J’ai dirigé le développement de la plateforme d’innovation du PNUD : 7 500+ comptes.'
+  },
+  {
+    name: 'CINOLU OneStop',
+    href: 'https://cinolu.org',
+    insight: 'Programmes et 2 800 entrepreneurs réunis sur une seule plateforme.'
+  },
+  {
+    name: 'Katanga Business Meeting',
+    href: 'https://www.kbm-rdc.com/en',
+    insight: 'Badges d’accès générés automatiquement à partir de 1 150 inscriptions.'
+  },
+  {
+    name: 'Innovation Summer Camp',
+    insight: '13 apprenants encadrés, du premier programme au web : tous ont terminé.'
+  }
+]
 ---
 
-<section id="a-propos" class="scroll-mt-20 border-b border-neutral-800" aria-labelledby="a-propos-title">
-  <div class="page-shell grid gap-10 py-20 md:py-28 lg:grid-cols-[5fr_7fr] lg:gap-16">
-    <div>
-      <h2
-        id="a-propos-title"
-        class="text-4xl leading-[1.05] font-bold tracking-[-0.03em] text-balance text-neutral-50 md:text-5xl lg:sticky lg:top-24">
-        Un logiciel utile commence par comprendre le travail.
-      </h2>
-    </div>
-    <div class="flex max-w-[70ch] flex-col gap-6 text-lg leading-relaxed text-neutral-400">
+<section id="a-propos" class="scroll-mt-32 md:scroll-mt-20 border-b border-neutral-800" aria-labelledby="a-propos-title">
+  <div class="page-shell grid gap-8 py-14 md:py-20 lg:grid-cols-[5fr_7fr] lg:gap-16">
+    <h2
+      id="a-propos-title"
+      class="text-4xl leading-[1.05] font-bold tracking-[-0.03em] text-balance text-neutral-50 md:text-5xl">
+      Un logiciel utile commence par comprendre le travail.
+    </h2>
+    <div class="flex max-w-[65ch] flex-col gap-5 text-lg leading-relaxed text-neutral-400">
       <p>
-        Je commence par comprendre comment les gens travaillent aujourd'hui, où le temps se perd et à quoi ressemble un
-        résultat réussi. Ce contexte me permet de transformer des exigences en décisions produit ciblées, au lieu de
-        reproduire un processus compliqué dans un logiciel.
+        Avant d’écrire du code, je regarde comment les gens travaillent, où le temps se perd et ce qu’un bon résultat
+        change pour eux. J’en tire des décisions produit simples, plutôt qu’un processus compliqué recopié dans un
+        logiciel.
       </p>
       <p>
-        Pour le laboratoire d'innovation du PNUD, j'ai dirigé le développement de{' '}
-        <a class="text-link" href="https://fikiri.co" {...externalLink}>Fikiri</a>, une plateforme d'innovation qui
-        compte plus de 7 500 comptes, puis j'y suis revenu deux ans plus tard pour en reconstruire les parcours
-        essentiels. Pour <a class="text-link" href="https://cinolu.org" {...externalLink}>CINOLU</a>, j'ai livré
-        OneStop, qui réunit la gestion des programmes et 2 800 entrepreneurs inscrits sur une seule plateforme.
+        Je renforce une équipe ou je porte seul la livraison sur toute la pile : Angular, NestJS, TypeScript, Docker et
+        CI/CD, de l’interface jusqu’à la production. Je partage ce que j’apprends dans des{' '}
+        <a class="text-link" href="/cours">cours</a> et des <a class="text-link" href="/articles">articles</a> open
+        source.
       </p>
-      <p>
-        Au <a class="text-link" href="https://www.kbm-rdc.com/en" {...externalLink}>Katanga Business Meeting 2026</a>,
-        j'ai automatisé la préparation des badges à partir d'environ 1 150 inscriptions Brella. Pendant
-        l'Innovation Summer Camp 2026 de CINOLU, j'ai encadré 13 apprenants, de l'initiation à l'informatique jusqu'au
-        développement web : tous sont allés au bout du programme.
-      </p>
-      <p>
-        Je peux renforcer une équipe d'ingénierie ou porter la livraison sur toute la pile. Mon socle : Angular,
-        NestJS, TypeScript, Docker et la CI/CD, de l'interface aux API, des bases de données au déploiement et à
-        l'exploitation en production.
-      </p>
-      <p class="text-neutral-200">
-        Je partage aussi ce que ces projets m'apprennent : des <a class="text-link" href="/cours">cours</a>, des{' '}
-        <a class="text-link" href="/articles">articles</a> et bientôt des conférences, tous publics et open source.
-      </p>
+      <ul class="mt-3 border-t border-neutral-800 text-base" aria-label="Quelques réalisations">
+        {
+          achievements.map((item) => (
+            <li class="grid gap-1 border-b border-neutral-800 py-3.5 sm:grid-cols-[13rem_1fr] sm:gap-6">
+              {item.href ? (
+                <a class="font-medium text-neutral-100 transition-colors hover:text-primary-300" href={item.href} {...externalLink}>
+                  {item.name}
+                </a>
+              ) : (
+                <span class="font-medium text-neutral-100">{item.name}</span>
+              )}
+              <span class="text-neutral-400">{item.insight}</span>
+            </li>
+          ))
+        }
+      </ul>
     </div>
   </div>
 </section>

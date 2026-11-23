@@ -10,7 +10,7 @@ const articles = sortArticles(await getCollection('articles'))
 <Layout
   title="Articles | Wilfried Musanzi"
   description="Des articles pratiques sur le développement web, NestJS, l'IA et la construction de logiciels fiables.">
-  <div class="page-shell py-16 md:py-24">
+  <div class="page-shell py-10 md:py-16">
     <header>
       <h1 class="text-5xl leading-[1.05] font-bold tracking-[-0.03em] text-balance text-neutral-50 md:text-7xl">
         Articles
@@ -20,7 +20,7 @@ const articles = sortArticles(await getCollection('articles'))
         pour bien s'en servir.
       </p>
     </header>
-    <ul class="mt-12 border-t border-neutral-800 md:mt-16">
+    <ul class="mt-8 border-t border-neutral-800 md:mt-10">
       {articles.map((article) => <ArticleRow post={article} headingLevel={2} />)}
     </ul>
   </div>

@@ -9,7 +9,8 @@ const articles = defineCollection({
     description: z.string(),
     publishedAt: z.coerce.date(),
     author: z.string().default('Wilfried Musanzi'),
-    tags: z.array(z.string()).default([])
+    tags: z.array(z.string()).default([]),
+    cover: z.object({ title: z.string(), subtitle: z.string().optional() }).optional()
   })
 })
 
@@ -22,7 +23,8 @@ const courses = defineCollection({
     updatedAt: z.coerce.date().optional(),
     author: z.string().default('Wilfried Musanzi'),
     tags: z.array(z.string()).default([]),
-    sourceUrl: z.string().url().optional()
+    sourceUrl: z.string().url().optional(),
+    cover: z.object({ title: z.string(), subtitle: z.string().optional() }).optional()
   })
 })
 

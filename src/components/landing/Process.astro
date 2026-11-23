@@ -1,0 +1,119 @@
+---
+import Icon from '../shared/Icon.astro'
+
+const courseUrl = '/cours/workflow-claude-code'
+const skillsRepositoryUrl = 'https://github.com/musanzi/skills'
+
+const groups = [
+  {
+    title: 'Démarrer',
+    summary: 'Installer une fois, puis savoir quel skill lancer.',
+    skills: ['setup-skills', 'workflow'],
+    start: 'setup-skills',
+    href: `${courseUrl}/installation`
+  },
+  {
+    title: 'Le flux principal',
+    summary: 'De l’idée au code livré, dans l’ordre.',
+    skills: ['grill-with-docs', 'to-spec', 'to-tickets', 'implement', 'spec-review', 'pr', 'retro'],
+    start: 'grill-with-docs',
+    href: `${courseUrl}/le-flux-principal`
+  },
+  {
+    title: 'Explorer',
+    summary: 'Trancher une question ouverte avant d’écrire du code.',
+    skills: ['grilling', 'prototype', 'research', 'wayfinder', 'to-questionnaire'],
+    start: 'grilling',
+    href: `${courseUrl}/planifier`
+  },
+  {
+    title: 'Construire',
+    summary: 'Test d’abord, un comportement à la fois, même en parallèle.',
+    skills: ['implement-spec', 'tdd', 'diagnosing-bugs', 'triage'],
+    start: 'tdd',
+    href: `${courseUrl}/construire`
+  },
+  {
+    title: 'Santé du code',
+    summary: 'Garder des modules profonds et un vocabulaire partagé.',
+    skills: ['architect-codebase', 'codebase-design', 'domain-modeling'],
+    start: 'codebase-design',
+    href: `${courseUrl}/outils-et-ecriture`
+  },
+  {
+    title: 'Écrire et outiller',
+    summary: 'Des textes clairs pour les humains et pour les agents.',
+    skills: ['writing-for-agents', 'interview', 'technical-writing', 'unslop', 'git-guardrails', 'find-skills'],
+    start: 'interview',
+    href: `${courseUrl}/outils-et-ecriture`
+  }
+]
+---
+
+<section id="processus" class="scroll-mt-32 border-b border-neutral-800 md:scroll-mt-20" aria-labelledby="processus-title">
+  <div class="page-shell py-14 md:py-20">
+    <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+      <div>
+        <h2
+          id="processus-title"
+          class="max-w-[20ch] text-4xl leading-[1.05] font-bold tracking-[-0.03em] text-balance text-neutral-50 md:text-5xl">
+          Mon processus, en skills que vous pouvez installer.
+        </h2>
+        <p class="mt-5 max-w-[60ch] text-lg leading-relaxed text-neutral-400">
+          Chaque étape de mon travail avec Claude Code tient dans un skill gratuit et open source. La plupart des
+          fonctionnalités passent par le flux principal ; le cours détaille chaque étape.
+        </p>
+      </div>
+      <a class="button-secondary group shrink-0" href={skillsRepositoryUrl} target="_blank" rel="noreferrer">
+        Voir les 35 skills
+        <Icon class="size-4 transition-transform duration-200 group-hover:translate-x-0.5" name="arrow-right" />
+      </a>
+    </div>
+
+    <ol
+      class="mt-10 grid gap-px overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-800 md:mt-12 md:grid-cols-2 lg:grid-cols-3">
+      {
+        groups.map((group, index) => (
+          <li class="flex flex-col bg-surface p-6 md:p-7">
+            <h3 class="flex items-baseline gap-3 text-xl font-semibold tracking-[-0.01em] text-neutral-50">
+              <span
+                class:list={['font-code text-sm', index === 0 ? 'text-primary-400' : 'text-neutral-500']}
+                aria-hidden="true">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              {group.title}
+            </h3>
+            <p class="mt-2 text-neutral-400">{group.summary}</p>
+            <ul class="mt-5 mb-6 flex flex-wrap gap-2" aria-label={`Skills : ${group.title}`}>
+              {group.skills.map((skill) => (
+                <li class="rounded-md border border-neutral-800 bg-neutral-900/60 px-2.5 py-1 font-code text-sm text-neutral-300">
+                  /{skill}
+                </li>
+              ))}
+            </ul>
+            <a
+              class:list={[
+                'group mt-auto flex min-h-11 items-center justify-between gap-2 rounded-lg border px-3.5 text-sm transition-colors duration-200',
+                index === 0
+                  ? 'border-primary-600/50 bg-primary-950/40 text-primary-300 hover:border-primary-500 hover:bg-primary-950/70'
+                  : 'border-neutral-800 text-neutral-300 hover:border-neutral-600 hover:text-neutral-50'
+              ]}
+              href={group.href}>
+              <span class="min-w-0 truncate">
+                Commencer par <span class="font-code">/{group.start}</span>
+              </span>
+              <Icon class="size-4 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5" name="arrow-right" />
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+
+    <p class="mt-6 max-w-[75ch] text-sm leading-relaxed text-neutral-500">
+      Merci à <a class="text-link" href="https://github.com/mattpocock" target="_blank" rel="noreferrer">Matt Pocock</a> :
+      la plupart de ces skills sont nés d’une copie de son dépôt{' '}
+      <a class="text-link" href="https://github.com/mattpocock/skills" target="_blank" rel="noreferrer">mattpocock/skills</a>,
+      que j’ai ensuite renommés et adaptés à ma façon de travailler.
+    </p>
+  </div>
+</section>

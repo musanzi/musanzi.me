@@ -4,6 +4,9 @@ description: "Installer et utiliser mes skills Claude Code pour mener une foncti
 publishedAt: 2026-11-23
 tags: [Claude Code, IA, Workflow, Agents]
 sourceUrl: "https://github.com/musanzi/skills"
+cover:
+  title: 'Mon workflow avec Claude Code'
+  subtitle: "De l'idée floue à la pull request fusionnée"
 ---
 
 Ce cours s'adresse aux développeurs qui utilisent déjà Claude Code et qui voient l'agent foncer vers le code avant que l'idée soit claire, oublier une décision prise une heure plus tôt ou livrer un diff que personne n'a vraiment relu. Je vous montre comment je travaille au quotidien : un ensemble de skills qui découpe le travail en étapes, de l'interrogatoire sur l'idée jusqu'à la description de la pull request.
@@ -12,4 +15,4 @@ Ce cours s'adresse aux développeurs qui utilisent déjà Claude Code et qui voi
 
 Il vous faut Claude Code installé, git, et un compte GitHub, car les skills suivent les tickets sur GitHub par défaut (GitLab et des fichiers Markdown locaux sont aussi pris en charge). Ma pile est NestJS côté serveur et Angular côté client, et certains skills sont écrits pour elle. Le reste du workflow ne dépend d'aucun framework : le dernier chapitre explique comment l'adapter au vôtre.
 
-Tout est open source, sous licence MIT, dans le dépôt [musanzi/skills](https://github.com/musanzi/skills). La plupart des skills de planification, de construction et de relecture sont partis d'une copie de [mattpocock/skills](https://github.com/mattpocock/skills), puis je les ai renommés et modifiés. `angular-developer` vient de [angular/skills](https://github.com/angular/skills), `impeccable` de [pbakaus/impeccable](https://github.com/pbakaus/impeccable) et `find-skills` de [vercel-labs/skills](https://github.com/vercel-labs/skills). Merci à leurs auteurs.
+Tout est open source, dans le dépôt [musanzi/skills](https://github.com/musanzi/skills). La plupart des skills de planification, de construction et de relecture sont partis d'une copie de [mattpocock/skills](https://github.com/mattpocock/skills), puis je les ai renommés et modifiés. `angular-developer` vient de [angular/skills](https://github.com/angular/skills), `impeccable` de [pbakaus/impeccable](https://github.com/pbakaus/impeccable) et `find-skills` de [vercel-labs/skills](https://github.com/vercel-labs/skills). Merci à leurs auteurs.

@@ -1,36 +1,31 @@
 ---
-const steps = [
+const values = [
   {
-    title: 'Comprendre le besoin réel',
-    text: "Clarifier le vrai problème opérationnel, cartographier la façon dont les équipes travaillent et traduire les attentes des parties prenantes en exigences produit ciblées."
+    verb: 'Comprendre',
+    text: 'Je clarifie le vrai problème, j’observe comment l’équipe travaille et je traduis les attentes en exigences produit nettes.'
   },
   {
-    title: 'Développement fullstack',
-    text: "Construire des interfaces, des API, des modèles de données et des outils d'administration maintenables avec Angular, NestJS et TypeScript, puis les déployer de façon fiable avec Docker et la CI/CD."
+    verb: 'Construire',
+    text: 'Interfaces, API, données et outils d’administration en Angular, NestJS et TypeScript, déployés avec Docker et la CI/CD.'
   },
   {
-    title: 'Transmission',
-    text: "Partager ce que j'apprends à travers des cours, des articles et des conférences, tous open source."
+    verb: 'Transmettre',
+    text: 'Je partage mes méthodes dans des cours, des articles et bientôt des conférences, tous open source.'
   }
 ]
 ---
 
 <section class="border-b border-neutral-800" aria-labelledby="value-title">
-  <div class="page-shell py-20 md:py-28">
-    <h2
-      id="value-title"
-      class="max-w-[22ch] text-4xl leading-[1.05] font-bold tracking-[-0.03em] text-balance text-neutral-50 md:text-5xl">
-      Un accompagnement sur tout le cycle de vie du produit.
-    </h2>
-    <ol class="mt-14 grid gap-10 md:mt-16 md:grid-cols-3 md:gap-8 lg:gap-12">
+  <div class="page-shell py-14 md:py-20">
+    <h2 id="value-title" class="sr-only">Ce que j’apporte</h2>
+    <ol class="border-t border-neutral-800">
       {
-        steps.map((step, index) => (
-          <li class="border-t border-neutral-800 pt-6">
-            <span class="font-code text-sm text-primary-500" aria-hidden="true">
-              {String(index + 1).padStart(2, '0')}
-            </span>
-            <h3 class="mt-4 text-xl leading-snug font-semibold text-neutral-50">{step.title}</h3>
-            <p class="mt-3 text-lg leading-relaxed text-neutral-400">{step.text}</p>
+        values.map((value) => (
+          <li class="group grid gap-3 border-b border-neutral-800 py-7 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:items-center md:gap-16 md:py-9">
+            <h3 class="text-5xl leading-none font-bold tracking-[-0.035em] text-neutral-50 transition-colors duration-300 group-hover:text-primary-400 md:text-6xl lg:text-7xl">
+              {value.verb}
+            </h3>
+            <p class="max-w-[52ch] text-lg leading-relaxed text-neutral-400">{value.text}</p>
           </li>
         ))
       }

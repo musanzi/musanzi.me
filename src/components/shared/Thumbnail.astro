@@ -1,0 +1,37 @@
+---
+import { Image } from 'astro:assets'
+import portrait from '../../assets/wilfried.jpeg'
+
+interface Props {
+  title: string
+  subtitle?: string
+  sizes?: string
+  eager?: boolean
+  class?: string
+}
+
+const { title, subtitle, sizes = '22rem', eager = false, class: className } = Astro.props
+---
+
+<div
+  class:list={[
+    '@container relative isolate aspect-video overflow-hidden rounded-xl border border-neutral-800 bg-[#100f0e]',
+    className
+  ]}
+  aria-hidden="true">
+  <div class="absolute inset-0 bg-[radial-gradient(60%_70%_at_30%_0%,rgb(255_255_255/0.12),transparent_72%)]"></div>
+  <div class="absolute inset-y-0 right-0 w-[46%] overflow-hidden">
+    <Image
+      class="h-full w-full origin-[50%_12%] scale-[1.3] object-cover object-[50%_10%]"
+      src={portrait}
+      widths={[320, 640, 853]}
+      sizes={sizes}
+      loading={eager ? 'eager' : 'lazy'}
+      alt="" />
+    <div class="absolute inset-0 bg-linear-to-r from-[#100f0e] via-[#100f0e]/25 to-transparent"></div>
+  </div>
+  <div class="relative flex h-full w-[60%] flex-col justify-center pr-[2%] pl-[6.5%]">
+    <p class="text-[6.4cqw] leading-[1.05] font-bold tracking-[-0.025em] text-balance text-neutral-50">{title}</p>
+    {subtitle && <p class="mt-[2.4cqw] text-[2.9cqw] leading-snug text-pretty text-neutral-400">{subtitle}</p>}
+  </div>
+</div>
