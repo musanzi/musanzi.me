@@ -1,6 +1,6 @@
 # musanzi.me
 
-The source code for [musanzi.me](https://musanzi.me), Wilfried Musanzi's personal portfolio. The site introduces my work as a Fullstack web developer and presents selected projects as individual case studies.
+The source code for [musanzi.me](https://musanzi.me), Wilfried Musanzi's personal site. The site is written in French. It introduces my work as a fullstack web developer and publishes articles, and later courses and talks, all open source.
 
 ## Getting started
 
@@ -38,15 +38,15 @@ Astro will print the local development URL in the terminal, typically `http://lo
 public/                  Static files copied as-is
 src/
 ├── assets/              Images processed by Astro
-├── components/          Home and project UI components
-├── content/projects/    Markdown project case studies
+├── components/          Home and article UI components
+├── content/articles/    Markdown articles
 ├── layouts/             Shared page layout and metadata
 ├── pages/               File-based routes
 └── styles/global.css    Global styles and Tailwind setup
 astro.config.mjs         Astro, sitemap, and Tailwind configuration
 ```
 
-Project pages are generated from Markdown files in `src/content/projects/`. Add a Markdown file there, together with its image in `src/assets/`, to publish another case study at `/projects/<slug>`.
+Article pages are generated from Markdown files in `src/content/articles/`. Add a Markdown file there to publish another article at `/articles/<slug>`.
 
 ## Production build
 
@@ -56,3 +56,7 @@ pnpm preview
 ```
 
 The deployed site URL is configured as `https://musanzi.me` in `astro.config.mjs`, which Astro uses for canonical URLs and sitemap generation.
+
+## License
+
+The site's code is licensed under the [MIT License](LICENSE). The written content (articles, courses, and talk material) is licensed under [CC BY 4.0](LICENSE-CONTENT.md).

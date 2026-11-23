@@ -14,6 +14,8 @@ export default defineConfig({
     "/projects/cinolu-onestop": "/#about",
     "/projects/kbm-2026": "/#about",
     "/projects/innovation-summer-camp-2026": "/#about",
+    "/blog": "/articles",
+    "/blog/my-thoughts-on-ai": "/articles/mes-reflexions-sur-l-ia",
   },
   integrations: [sitemap()],
   vite: {

@@ -1,0 +1,30 @@
+---
+import { getCollection } from 'astro:content'
+import ArticleCard from '../articles/ArticleCard.astro'
+import Icon from '../shared/Icon.astro'
+import { sortArticles } from '../../lib/articles'
+
+const articles = sortArticles(await getCollection('articles'))
+---
+
+<section id="articles" class="mb-14 scroll-mt-8 md:mb-22" aria-labelledby="articles-title">
+  <div class="mb-3 flex items-center gap-2.5">
+    <p class="inline-flex items-center gap-1.5 text-sm leading-4 font-semibold tracking-wide whitespace-nowrap text-neutral-400">
+      <Icon class="size-4" name="file-text" />
+      Articles récents
+      </p>
+    <div class="h-px w-full bg-neutral-700"></div>
+  </div>
+
+  <div class="mb-7 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+    <h2 id="articles-title" class="text-2xl leading-tight font-bold text-neutral-50">Notes sur le logiciel et le travail autour.</h2>
+    <a class="inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold text-primary-400 transition hover:text-primary-300 focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:outline-none" href="/articles">
+      Tous les articles
+      <Icon class="size-3.5" name="arrow-right" />
+    </a>
+  </div>
+
+  <div class="grid gap-4 md:grid-cols-2">
+    {articles.slice(0, 2).map((article) => <ArticleCard post={article} />)}
+  </div>
+</section>

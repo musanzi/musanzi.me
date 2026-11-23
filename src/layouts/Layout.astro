@@ -12,8 +12,8 @@ interface Props {
 }
 
 const {
-  title = "Wilfried Musanzi | Fullstack Web Developer",
-  description = "Fullstack developer building reliable Angular and NestJS web products for businesses, NGOs, innovation programs, and growing teams.",
+  title = "Wilfried Musanzi | Développeur web fullstack",
+  description = "Développeur web fullstack : je conçois des produits web fiables avec Angular et NestJS pour les entreprises, les ONG, les programmes d'innovation et les équipes en croissance.",
   ogType = "website",
   publishedTime,
 } = Astro.props;
@@ -27,7 +27,7 @@ const structuredData = {
   name: "Wilfried Musanzi",
   url: Astro.site,
   image: socialImageURL,
-  jobTitle: "Lead Software Developer",
+  jobTitle: "Développeur web fullstack",
   worksFor: {
     "@type": "Organization",
     name: "CINOLU",
@@ -41,7 +41,7 @@ const structuredData = {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -54,7 +54,7 @@ const structuredData = {
     <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta property="og:type" content={ogType} />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale" content="fr_FR" />
     <meta property="og:site_name" content="Wilfried Musanzi" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
